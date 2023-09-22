@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-
-
-
     // MOVIMIENTO HORIZONTAL DEL PERSONAJE
 
 
@@ -39,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     // // // // // // // // // // // // // // // // // // // // // // //
-    void FixedUpdate()
+    void Update()
     {
 
         // Obtener la entrada del jugador en el eje horizontal
@@ -69,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimer += Time.deltaTime; // Incrementa el temporizador del coyote time si no está en el suelo
         }
 
-        if (Input.GetKey(KeyCode.Space) && CheckGround.isGrounded)
+        if (jumpCount < 1 && Input.GetKey(KeyCode.Space) && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
         {
             playerrigidbody2D.velocity = new Vector2(playerrigidbody2D.velocity.x, jumpForce);
             jumpCount++;

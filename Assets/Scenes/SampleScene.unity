@@ -333,6 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9479d82344f8b7d47b348bf17a8ac66e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  shootPosition: {fileID: 0}
   speed: 1.5
   jumpForce: 4
   coyoteTime: 0.2
