@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     // // // // // // // // // // // // // // // // // // // // // // //
-    void Update()
+    void FixedUpdate()
     {
 
         // Obtener la entrada del jugador en el eje horizontal
