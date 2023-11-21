@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimer += Time.deltaTime; // Incrementa el temporizador del coyote time si no está en el suelo
         }
 
-        if (jumpCount < 1 && Input.GetKey(KeyCode.Space) && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
+        if (jumpCount < 1 && Input.GetKeyDown(KeyCode.Space) && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
         {
             playerrigidbody2D.velocity = new Vector2(playerrigidbody2D.velocity.x, jumpForce);
             jumpCount++;
