@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerOneWayPlatform : MonoBehaviour
 {
     private GameObject currentOneWayPlatform;
+    public PlatformEffector2D platformEffector;
     [SerializeField] private BoxCollider2D playerCollider;
 
     // Start is called before the first frame update
@@ -29,6 +31,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("OneWayPlatform"))
         {
             currentOneWayPlatform = collision.gameObject;
+            Debug.Log(currentOneWayPlatform);
         }
     }
 
@@ -42,10 +45,11 @@ public class PlayerOneWayPlatform : MonoBehaviour
 
     private IEnumerator DisableCollision()
     {
-        BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
-        Physics2D.IgnoreCollision(playerCollider, platformCollider);
-        yield return new WaitForSeconds(0.25f);
-        Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
+        Debug.Log("XD");
+        TilemapCollider2D platformCollider = currentOneWayPlatform.GetComponent<TilemapCollider2D>();
+        platformEffector.rotationalOffset = 180;
+        yield return new WaitForSeconds(0.45f);
+        platformEffector.rotationalOffset = 0;
     }
 
 }
