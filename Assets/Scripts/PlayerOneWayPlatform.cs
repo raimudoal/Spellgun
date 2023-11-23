@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class PlayerOneWayPlatform : MonoBehaviour
 {
     private GameObject currentOneWayPlatform;
-    public PlatformEffector2D platformEffector;
+    private PlatformEffector2D platformEffector;
     [SerializeField] private BoxCollider2D playerCollider;
 
     // Start is called before the first frame update
@@ -31,6 +31,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("OneWayPlatform"))
         {
             currentOneWayPlatform = collision.gameObject;
+            platformEffector = currentOneWayPlatform.GetComponentInParent<PlatformEffector2D>();
             Debug.Log(currentOneWayPlatform);
         }
     }
@@ -50,6 +51,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
         platformEffector.rotationalOffset = 180;
         yield return new WaitForSeconds(0.45f);
         platformEffector.rotationalOffset = 0;
+        platformEffector = null;
     }
 
 }
