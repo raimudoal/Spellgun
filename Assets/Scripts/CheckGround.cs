@@ -12,10 +12,18 @@ public class CheckGround : MonoBehaviour
         {
             isGrounded = true; // Indica que el personaje está en el suelo
         }
+        else if (collision.gameObject.CompareTag("OneWayPlatform"))
+        {
+            isGrounded = true; // Indica que el personaje está en el suelo
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false; // Indica que el personaje ya no está en el suelo
+        }
+        else if (collision.gameObject.CompareTag("OneWayPlatform"))
         {
             isGrounded = false; // Indica que el personaje ya no está en el suelo
         }

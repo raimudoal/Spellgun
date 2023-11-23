@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerOneWayPlatform : MonoBehaviour
 {
-    private GameObject
-        currentOneWayPlatform;
+    private GameObject currentOneWayPlatform;
     [SerializeField] private BoxCollider2D playerCollider;
 
     // Start is called before the first frame update
