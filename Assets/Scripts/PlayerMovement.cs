@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -17,14 +18,24 @@ public class PlayerMovement : MonoBehaviour
     // SALTO DEL JUGADOR
 
 
-    public float jumpForce = 4f; // Fuerza aplicada al saltar
+    [SerializeField] public float jumpForce; // Fuerza aplicada al saltar
+    [SerializeField] private bool isJumping;
+    [SerializeField] public float jumpMultiplier;
+    [SerializeField] public float jumpTime;
+    [SerializeField] float jumpTimer;
     private int jumpCount = 0; // Contador de saltos realizados
+
+    [SerializeField] float fallMultiplier;
+    Vector2 vecGravity;
 
     public float coyoteTime = 0.2f; // Tiempo de coyote     (El tiempo máximo que te deja hacer un salto despues de salir del suelo)
     private float coyoteTimer = 0f; // Temporizador del coyote time   (Empieza cuando el personaje deja de estar en el suelo)
 
+
+
     private void Awake()
     {
+        vecGravity = new Vector2(0, -Physics2D.gravity.y);
         // Obtener la referencia al Rigidbody2D del objeto al que está adjunto el script
         playerrigidbody2D = GetComponent<Rigidbody2D>();
 
@@ -53,8 +64,48 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteRenderer.flipX = true;  // Voltear el sprite
         }
+    }
 
+    private void Update()
+    {
         //SALTO PERSONAJE
+        if (jumpCount < 1 && Input.GetButtonDown("Jump") && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
+        {
+            playerrigidbody2D.velocity = new Vector2(playerrigidbody2D.velocity.x, jumpForce);
+            jumpCount++;
+            isJumping = true;
+            jumpTimer = 0;
+        }
+
+        if (playerrigidbody2D.velocity.y > 0 && isJumping)
+        {
+            jumpTimer += Time.deltaTime;
+            if (jumpTimer > jumpTime)
+            {
+                isJumping = false;
+            }
+            float t = jumpTimer / jumpTime;
+            float currentJumpM = jumpMultiplier;
+
+            if (t > 0.5f)
+            {
+                currentJumpM = jumpMultiplier * (1 - t);
+            }
+            playerrigidbody2D.velocity += vecGravity * currentJumpM * Time.deltaTime;
+        }
+
+        if (playerrigidbody2D.velocity.y < 0 && isJumping)
+        {
+            playerrigidbody2D.velocity += vecGravity * fallMultiplier * Time.deltaTime;
+        }
+
+        
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            isJumping = false;
+        }
+
         if (CheckGround.isGrounded)
         {
             coyoteTimer = 0f; // Reinicia el temporizador del coyote time si está en el suelo
@@ -65,11 +116,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimer += Time.deltaTime; // Incrementa el temporizador del coyote time si no está en el suelo
         }
 
-        if (jumpCount < 1 && Input.GetKey(KeyCode.Space) && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
-        {
-            playerrigidbody2D.velocity = new Vector2(playerrigidbody2D.velocity.x, jumpForce);
-            jumpCount++;
-        }
+        
 
     }
 }
