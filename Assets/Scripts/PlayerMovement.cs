@@ -35,12 +35,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        vecGravity = new Vector2(0, -Physics2D.gravity.y);
+        
         // Obtener la referencia al Rigidbody2D del objeto al que está adjunto el script
         playerrigidbody2D = GetComponent<Rigidbody2D>();
 
         // Obtener la referencia al componente SpriteRenderer
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        vecGravity = new Vector2(0, -Physics2D.gravity.y);
     }
 
 
@@ -94,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
             playerrigidbody2D.velocity += vecGravity * currentJumpM * Time.deltaTime;
         }
 
-        if (playerrigidbody2D.velocity.y < 0 && isJumping)
+        if (playerrigidbody2D.velocity.y < 0)
         {
             playerrigidbody2D.velocity += vecGravity * fallMultiplier * Time.deltaTime;
         }
