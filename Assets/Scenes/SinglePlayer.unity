@@ -24031,7 +24031,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 13.36
+  jumpForce: 8
+  isJumping: 0
+  jumpMultiplier: 3
+  jumpTime: 0.4
+  jumpTimer: 0
+  fallMultiplier: -0.73
   coyoteTime: 0.1
 --- !u!212 &706803638
 SpriteRenderer:
@@ -24157,7 +24162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b76ca933e7e63488eba97fec7adbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformEffector: {fileID: 1593320247}
   playerCollider: {fileID: 706803634}
 --- !u!1 &748838893
 GameObject:
