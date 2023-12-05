@@ -21,13 +21,14 @@ public class OptionsMenu : MonoBehaviour
         int currentResolutionIndex = 0;
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
-
+                string option = resolutions[i].width + " x " + resolutions[i].height + " " + resolutions[i].refreshRateRatio.value.ToString("0.00") + "hz";
+                options.Add(option);
+            
             if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
             }
+
         }
 
         resolutionDropdown.AddOptions(options);
