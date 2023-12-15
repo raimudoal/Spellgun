@@ -5,16 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public Animator transition;
+
+    public GameObject transitionObject;
+
     // Start is called before the first frame update
     void Start()
     {
         AudioListener.volume = PlayerPrefs.GetFloat("Volume");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        DontDestroyOnLoad(transitionObject);
     }
 
     public void ExitGame()
@@ -22,13 +25,15 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void Singleplayer()
+    public void ChangeScene(int scene)
     {
-        SceneManager.LoadScene(sceneBuildIndex:1);
+        StartCoroutine(MakeTransition(scene));
     }
 
-    public void OptionsMenu()
+    IEnumerator MakeTransition(int scene)
     {
-        SceneManager.LoadScene(sceneBuildIndex: 2);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(sceneBuildIndex: scene);
     }
 }
