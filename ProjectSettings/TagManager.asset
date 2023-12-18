@@ -47,3 +47,6 @@ TagManager:
   - name: floor
     uniqueID: 4276751053
     locked: 0
+  - name: Transition
+    uniqueID: 2425951103
+    locked: 0
