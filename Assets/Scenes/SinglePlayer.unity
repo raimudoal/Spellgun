@@ -29594,7 +29594,7 @@ MonoBehaviour:
   - {fileID: 1096303705}
   - {fileID: 747690671}
   bulletType:
-  - {fileID: 8640552810022702670, guid: 0e19001d4cb1f1f469b6ca84cccbb828, type: 3}
+  - {fileID: 2775544907945190617, guid: be01359ddaf5bc246a633e18aa2ee576, type: 3}
 --- !u!212 &841334475
 SpriteRenderer:
   m_ObjectHideFlags: 0
