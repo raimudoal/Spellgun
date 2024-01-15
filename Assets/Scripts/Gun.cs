@@ -95,7 +95,7 @@ public class Gun : MonoBehaviour
 
     IEnumerator Reload()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.20f);
         canShoot = true;
         animator.SetBool("Reloading", false);
     }
