@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 1.5f;  // Velocidad máxima del personaje al caminar
 
+    private ParticleSystem dustParticle;
 
     //COMPONENTES EMPTYOBJECT PLAYER
     private Rigidbody2D playerrigidbody2D;
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        dustParticle = GetComponent<ParticleSystem>();
         
         // Obtener la referencia al Rigidbody2D del objeto al que está adjunto el script
         playerrigidbody2D = GetComponent<Rigidbody2D>();
@@ -59,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(Vector2.right * speed * moveHorizontal * Time.deltaTime);
 
+        
 
         // Girar el sprite según la dirección del movimiento
         if (moveHorizontal > 0)
@@ -73,6 +76,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetAxis("Horizontal") != 0.0f && !dustParticle.isPlaying && CheckGround.isGrounded)
+        {
+            dustParticle.Play();
+        }
+        else if (Input.GetAxis("Horizontal") == 0.0f && dustParticle.isPlaying || !CheckGround.isGrounded)
+        {
+            dustParticle.Stop();
+        }
+
+
         //SALTO PERSONAJE
         if (jumpCount < 1 && Input.GetButtonDown("Jump") && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
         {
