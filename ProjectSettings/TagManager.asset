@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - OneWayPlatform
   - coveringLayer
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
