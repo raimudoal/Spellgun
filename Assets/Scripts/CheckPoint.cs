@@ -6,7 +6,9 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     private Animator animator;
-    private bool active;
+    public bool active;
+    public int index;
+    CheckpointManager controlCheckpoints;
 
     CheckPoint[] allCheckpoints;
 
@@ -14,25 +16,12 @@ public class CheckPoint : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        controlCheckpoints = FindObjectOfType<CheckpointManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (allCheckpoints != null)
-        {
-            Array.Clear(allCheckpoints, 0, allCheckpoints.Length);
-        }
-        
-        allCheckpoints = FindObjectsOfType<CheckPoint>();
-        foreach (CheckPoint checkpoint in allCheckpoints)
-        {
-            checkpoint.active = false;
-        }
-
-        active = true;
-        if (collision.CompareTag("Player"))
-        {
-            animator.SetBool("active", active);
-        }
+        controlCheckpoints.lastCheckpointIndex = index;
+        controlCheckpoints.LastCheckpointActive();
     }
 }
