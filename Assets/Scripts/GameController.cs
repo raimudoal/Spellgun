@@ -7,10 +7,11 @@ public class GameController : MonoBehaviour
 {
     public GameObject player;
     Scene currentScene;
+    CheckpointManager checkpointManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        checkpointManager = GetComponent<CheckpointManager>();
     }
 
     // Update is called once per frame
@@ -18,8 +19,12 @@ public class GameController : MonoBehaviour
     {
         if (player.transform.position.y < -10)
         {
-            currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.name);
+            GoToLastCheckPoint();
         }
+    }
+
+    private void GoToLastCheckPoint()
+    {
+        player.transform.position = checkpointManager.GetLastCheckPointPosition();
     }
 }

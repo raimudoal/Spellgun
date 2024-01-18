@@ -21,7 +21,11 @@ public class CheckPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        controlCheckpoints.lastCheckpointIndex = index;
-        controlCheckpoints.LastCheckpointActive();
+        if (collision.CompareTag("Player"))
+        {
+            controlCheckpoints.lastCheckpointIndex = index;
+            controlCheckpoints.LastCheckpointActive();
+        }
+        
     }
 }

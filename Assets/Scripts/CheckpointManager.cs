@@ -7,6 +7,7 @@ public class CheckpointManager : MonoBehaviour
 
     public GameObject[] checkPoints;
     public int lastCheckpointIndex = 0;
+    private Vector3 lastCheckPoint;
 
     void Start()
     {
@@ -26,11 +27,17 @@ public class CheckpointManager : MonoBehaviour
             if (i == lastCheckpointIndex)
             {
                 checkPoints[i].GetComponent<Animator>().SetBool("active", true);
+                lastCheckPoint = checkPoints[i].transform.position;
             }
             else
             {
                 checkPoints[i].GetComponent<Animator>().SetBool("active", false);
             }
         }
+    }
+
+    public Vector3 GetLastCheckPointPosition()
+    {
+        return lastCheckPoint;
     }
 }

@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // MOVIMIENTO HORIZONTAL DEL PERSONAJE
 
+    public GameController gameController;
 
     public float speed = 1.5f;  // Velocidad máxima del personaje al caminar
 
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        
         dustParticle = GetComponent<ParticleSystem>();
         
         // Obtener la referencia al Rigidbody2D del objeto al que está adjunto el script
