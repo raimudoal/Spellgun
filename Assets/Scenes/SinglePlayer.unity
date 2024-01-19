@@ -34471,6 +34471,7 @@ MonoBehaviour:
   - {fileID: 747690671}
   bulletType:
   - {fileID: 2775544907945190617, guid: be01359ddaf5bc246a633e18aa2ee576, type: 3}
+  - {fileID: 2775544907945190617, guid: 7c01f001903c5a747b2682811a083c09, type: 3}
 --- !u!212 &841334475
 SpriteRenderer:
   m_ObjectHideFlags: 0
