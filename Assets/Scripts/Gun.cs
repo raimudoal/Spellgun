@@ -34,6 +34,10 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (canShoot && Input.GetKeyDown(KeyCode.B))
+        {
+            ChangeBullet();
+        }
         if (!animator.GetBool("Reloading"))
         {
             var pos = Camera.main.WorldToScreenPoint(transform.position);
@@ -112,5 +116,17 @@ public class Gun : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed);
+    }
+
+    private void ChangeBullet()
+    {
+        if (bulletIndex == bulletType.Count -1)
+        {
+            bulletIndex = 0;
+        }
+        else
+        {
+            bulletIndex++;
+        }
     }
 }
