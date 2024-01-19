@@ -7,6 +7,7 @@ public class BasicBulletBehaviour : MonoBehaviour
     [SerializeField] private float speed;
     private float destroyDelay = 2f;
     private Rigidbody2D projectileRb;
+    public int damage;
 
     // Start is called before the first frame update
     private void Awake()

@@ -8,6 +8,7 @@ TagManager:
   - OneWayPlatform
   - coveringLayer
   - CheckPoint
+  - Bullet
   layers:
   - Default
   - TransparentFX

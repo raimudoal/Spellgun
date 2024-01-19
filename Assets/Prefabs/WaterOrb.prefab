@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1757920820443003060}
   m_Layer: 0
   m_Name: WaterOrb
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  damage: 1
 --- !u!198 &3519739100841473767
 ParticleSystem:
   m_ObjectHideFlags: 0
