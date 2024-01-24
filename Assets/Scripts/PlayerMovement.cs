@@ -33,11 +33,11 @@ public class PlayerMovement : MonoBehaviour
     public float coyoteTime = 0.2f; // Tiempo de coyote     (El tiempo máximo que te deja hacer un salto despues de salir del suelo)
     private float coyoteTimer = 0f; // Temporizador del coyote time   (Empieza cuando el personaje deja de estar en el suelo)
 
-
+    private Animator animator;
 
     private void Awake()
     {
-        
+        animator = GetComponent<Animator>();
         dustParticle = GetComponent<ParticleSystem>();
         
         // Obtener la referencia al Rigidbody2D del objeto al que está adjunto el script
@@ -87,6 +87,16 @@ public class PlayerMovement : MonoBehaviour
             dustParticle.Stop();
         }
 
+        if (Input.GetAxis("Horizontal") != 0.0000f)
+        {
+            animator.SetBool("run", true);
+        }
+        else
+        {
+            animator.SetBool("run", false);
+        }
+
+        Debug.Log(playerrigidbody2D.velocity.y);
 
         //SALTO PERSONAJE
         if (jumpCount < 1 && Input.GetButtonDown("Jump") && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
