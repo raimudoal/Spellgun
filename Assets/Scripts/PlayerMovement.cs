@@ -96,6 +96,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("run", false);
         }
 
+        animator.SetFloat("jump", playerrigidbody2D.velocity.y);
+
         Debug.Log(playerrigidbody2D.velocity.y);
 
         //SALTO PERSONAJE
@@ -140,10 +142,12 @@ public class PlayerMovement : MonoBehaviour
         {
             coyoteTimer = 0f; // Reinicia el temporizador del coyote time si está en el suelo
             jumpCount = 0; // Reinicia el contador de saltos si está en el suelo
+            animator.SetBool("grounded", true);
         }
         else
         {
             coyoteTimer += Time.deltaTime; // Incrementa el temporizador del coyote time si no está en el suelo
+            animator.SetBool("grounded", false);
         }
 
         
