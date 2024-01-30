@@ -6,7 +6,8 @@ public class CheckGround : MonoBehaviour
 {
     public static bool isGrounded;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -17,6 +18,7 @@ public class CheckGround : MonoBehaviour
             isGrounded = true; // Indica que el personaje está en el suelo
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

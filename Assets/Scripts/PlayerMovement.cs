@@ -98,8 +98,6 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("jump", playerrigidbody2D.velocity.y);
 
-        Debug.Log(playerrigidbody2D.velocity.y);
-
         //SALTO PERSONAJE
         if (jumpCount < 1 && Input.GetButtonDown("Jump") && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
         {
