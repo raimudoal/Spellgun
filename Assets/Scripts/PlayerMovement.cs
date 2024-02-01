@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float jumpMultiplier;
     [SerializeField] public float jumpTime;
     [SerializeField] float jumpTimer;
+    [SerializeField] GameObject torch;
+    [SerializeField] GameObject[] torchWaypoints;
+    [SerializeField] float torchSpeed;
     private int jumpCount = 0; // Contador de saltos realizados
 
     [SerializeField] float fallMultiplier;
@@ -34,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     private float coyoteTimer = 0f; // Temporizador del coyote time   (Empieza cuando el personaje deja de estar en el suelo)
 
     private Animator animator;
+
+    
 
     private void Awake()
     {
@@ -78,6 +83,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!spriteRenderer.flipX)
+        {
+            torch.transform.position = Vector3.MoveTowards(torch.transform.position, torchWaypoints[0].transform.position, Time.deltaTime * torchSpeed);
+
+        }
+        else
+        {
+            torch.transform.position = Vector3.MoveTowards(torch.transform.position, torchWaypoints[1].transform.position, Time.deltaTime * torchSpeed);
+        }
         if (Input.GetAxis("Horizontal") != 0.0f && !dustParticle.isPlaying && CheckGround.isGrounded)
         {
             dustParticle.Play();
