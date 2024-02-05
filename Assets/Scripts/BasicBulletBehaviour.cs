@@ -8,6 +8,7 @@ public class BasicBulletBehaviour : MonoBehaviour
     private float destroyDelay = 2f;
     private Rigidbody2D projectileRb;
     public int damage;
+    public string element;
 
     // Start is called before the first frame update
     private void Awake()

@@ -250,6 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 4
+  element: Fire
 --- !u!95 &3931157603990624669
 Animator:
   serializedVersion: 5

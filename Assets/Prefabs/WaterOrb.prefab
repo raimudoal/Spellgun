@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 1
+  element: Water
 --- !u!198 &3519739100841473767
 ParticleSystem:
   m_ObjectHideFlags: 0
