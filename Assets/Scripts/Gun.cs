@@ -10,6 +10,10 @@ public class Gun : MonoBehaviour
     private int current = 0;
     private float WPradius = 0.01f;
     public float speed;
+    [SerializeField] private Transform UIBullet;
+
+    int target = 0;
+    float r;
 
     private int bulletIndex = 0;
 
@@ -34,6 +38,9 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float Angle = Mathf.SmoothDampAngle(UIBullet.eulerAngles.z, target, ref r, 0.1f);
+        UIBullet.rotation = Quaternion.Euler(0, 0, Angle);
+
         if (canShoot && Input.GetKeyDown(KeyCode.B))
         {
             ChangeBullet();
@@ -128,5 +135,8 @@ public class Gun : MonoBehaviour
         {
             bulletIndex++;
         }
+        target = target - 90;
+
+
     }
 }
