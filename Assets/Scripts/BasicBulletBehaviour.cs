@@ -9,7 +9,7 @@ public class BasicBulletBehaviour : MonoBehaviour
     private Rigidbody2D projectileRb;
     public int damage;
     public string element;
-
+    public GameObject particleOnDeath;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -25,11 +25,17 @@ public class BasicBulletBehaviour : MonoBehaviour
     {
         projectileRb.velocity = direction * speed;
         Destroy(gameObject, destroyDelay);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
+        if (particleOnDeath)
+        {
+            GameObject explosion = Instantiate(particleOnDeath, transform.position, transform.rotation);
+            Destroy(explosion, 1);
+        }
     }
 
     void OnEnable()

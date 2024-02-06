@@ -53,7 +53,6 @@ public class Gun : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
             if (mousePos.x > transform.position.x)
             {
                 spriteRenderer.flipY = false;
@@ -64,7 +63,7 @@ public class Gun : MonoBehaviour
             }
         }
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !animator.GetBool("Reloading"))
         {
 
             if (bullets > 0 && canShoot)

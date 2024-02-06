@@ -43998,6 +43998,14 @@ PrefabInstance:
       propertyPath: UIBullet
       value: 
       objectReference: {fileID: 2025832073}
+    - target: {fileID: 1177652560644677803, guid: 1ec43a2c019f8b143be949f0c34f8744, type: 3}
+      propertyPath: bulletType.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177652560644677803, guid: 1ec43a2c019f8b143be949f0c34f8744, type: 3}
+      propertyPath: bulletType.Array.data[2]
+      value: 
+      objectReference: {fileID: 8328817961718176193, guid: b1fd655166248674b9e5c8298fddc345, type: 3}
     - target: {fileID: 2548441480528679486, guid: 1ec43a2c019f8b143be949f0c34f8744, type: 3}
       propertyPath: m_Name
       value: Player
