@@ -10,14 +10,12 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] GameObject enemyExploision;
     private enum Status { Normal, Wet, Burnt };
     Status status = Status.Normal;
-    private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rb;
+    public SpriteRenderer spriteRenderer;
+    public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
