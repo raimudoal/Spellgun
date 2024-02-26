@@ -9,6 +9,7 @@ TagManager:
   - coveringLayer
   - CheckPoint
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

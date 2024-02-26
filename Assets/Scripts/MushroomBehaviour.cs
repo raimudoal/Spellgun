@@ -11,19 +11,40 @@ public class MushroomBehaviour : EnemyBehaviour
     private PlayerMovement player;
     private Vector3 playerPos;
     private float followTimer = 0.0f;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerMovement>();
+        animator = GetComponent<Animator>();
+
+        GameObject[] otherObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject obj in otherObjects)
+        {
+            Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (!attacking)
         {
+            animator.SetBool("isRunning", false);
+            if (player.transform.position.x > this.transform.position.x)
+            {
+                
+                this.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                this.transform.localScale = Vector3.one;
+            }
+
             if (!following)
             {
                 transform.position = Vector3.MoveTowards(transform.position, Vector3.left, Time.deltaTime * speed);
@@ -39,14 +60,13 @@ public class MushroomBehaviour : EnemyBehaviour
             if (followTimer > 4.0f)
             {
                 followTimer = 0.0f;
-                if (transform.localScale == new Vector3(1, 1, 1))
+                if (transform.localScale == new Vector3(-1, 1, 1))
                 {
                     playerPos = player.transform.position + new Vector3(20, 0, 0);
                 }
-                else
+                else if (transform.localScale == new Vector3(1,1,1))
                 {
-                    playerPos = player.transform.position + new Vector3(-20, 0, 0);
-
+                    playerPos = player.transform.position - new Vector3(20, 0, 0);
                 }
                 attacking = true;
                 Debug.Log("START ATTACK");
@@ -57,12 +77,10 @@ public class MushroomBehaviour : EnemyBehaviour
                 if (transform.position.x < 83)
                 {
                     speed = -2.0f;
-                    transform.localScale = new Vector3(1, 1, 1);
                 }
                 if (transform.position.x > 100)
                 {
                     speed = 2.0f;
-                    transform.localScale = new Vector3(-1, 1, 1);
                 }
             }
 
@@ -79,8 +97,9 @@ public class MushroomBehaviour : EnemyBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerPos.x, 0, 0), Time.deltaTime * 7.5f);
-            if (Vector3.Magnitude()
+            animator.SetBool("isRunning", true);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerPos.x, 0, 0), Time.deltaTime * 10f);
+            if ((new Vector3(playerPos.x ,0,0) - new Vector3(transform.position.x,0,0)).sqrMagnitude < 0.5f)
             {
                 Debug.Log("STOPP ATTACK");
                 attacking = false;
