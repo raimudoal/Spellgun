@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4531616160282520614}
   - component: {fileID: 8475838234863631752}
   - component: {fileID: 1782966595410014081}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bolet
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7002029081881328027}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.64, y: 0.88, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

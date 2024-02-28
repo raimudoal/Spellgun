@@ -20,12 +20,6 @@ public class MushroomBehaviour : EnemyBehaviour
         player = FindObjectOfType<PlayerMovement>();
         animator = GetComponent<Animator>();
 
-        GameObject[] otherObjects = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (GameObject obj in otherObjects)
-        {
-            Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        }
     }
 
     // Update is called once per frame
