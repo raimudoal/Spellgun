@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     // SALTO DEL JUGADOR
 
-
+    public float health = 4;
     [SerializeField] public float jumpForce; // Fuerza aplicada al saltar
     [SerializeField] private bool isJumping;
     [SerializeField] public float jumpMultiplier;
@@ -28,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject torch;
     [SerializeField] GameObject[] torchWaypoints;
     [SerializeField] float torchSpeed;
+    [SerializeField] GameObject healthUI;
+    private Image healthUIImage;
     private int jumpCount = 0; // Contador de saltos realizados
 
     [SerializeField] float fallMultiplier;
@@ -44,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         dustParticle = GetComponent<ParticleSystem>();
+
+        healthUI = GameObject.FindGameObjectWithTag("HealthUI");
+        healthUIImage = healthUI.GetComponent<Image>();
         
         // Obtener la referencia al Rigidbody2D del objeto al que está adjunto el script
         playerrigidbody2D = GetComponent<Rigidbody2D>();
@@ -161,8 +167,19 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimer += Time.deltaTime; // Incrementa el temporizador del coyote time si no está en el suelo
             animator.SetBool("grounded", false);
         }
+    }
 
-        
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            health = health -1;
+            UpdateHealthUI();
+        }
+    }
 
+    private void UpdateHealthUI()
+    {
+        healthUIImage.fillAmount = health / 4;
     }
 }
