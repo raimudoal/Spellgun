@@ -11,7 +11,10 @@ public class MushroomBehaviour : EnemyBehaviour
     private PlayerMovement player;
     private Vector3 playerPos;
     private float followTimer = 0.0f;
+    private float attackTimer = 0.0f;
     private Animator animator;
+    public float pos1;
+    public float pos2;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,11 +71,11 @@ public class MushroomBehaviour : EnemyBehaviour
 
             if (!following)
             {
-                if (transform.position.x < 83)
+                if (transform.position.x < pos1)
                 {
                     speed = -2.0f;
                 }
-                if (transform.position.x > 100)
+                if (transform.position.x > pos2)
                 {
                     speed = 2.0f;
                 }
@@ -93,9 +96,11 @@ public class MushroomBehaviour : EnemyBehaviour
         {
             animator.SetBool("isRunning", true);
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerPos.x, 0, 0), Time.deltaTime * 10f);
-            if ((new Vector3(playerPos.x ,0,0) - new Vector3(transform.position.x,0,0)).sqrMagnitude < 0.5f)
+            attackTimer += Time.deltaTime;
+            if ((new Vector3(playerPos.x ,0,0) - new Vector3(transform.position.x,0,0)).sqrMagnitude < 0.5f || attackTimer >= 5)
             {
                 Debug.Log("STOPP ATTACK");
+                attackTimer = 0;
                 attacking = false;
             }
         }

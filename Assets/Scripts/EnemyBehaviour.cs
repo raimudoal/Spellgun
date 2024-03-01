@@ -13,17 +13,6 @@ public class EnemyBehaviour : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void GetHit(int damage)
     {
         health = health - damage;
