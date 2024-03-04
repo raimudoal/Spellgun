@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8c9d23ab96d51ea40b9aae411ef86995
+guid: 6fb4878c9abb85247b5dacbd57637f5c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 45
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -149,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fireParticleSprite_0
+      name: FireParticle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,41 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2358e05312ab6849896f4c030b65ffc
-      internalID: 1610372075
+      spriteID: 5f3a45750d1827745a60ffe4f4f1a214
+      internalID: 745906599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireParticleSprite_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edf8f3377dc6ae049bc362076a1fc56d
-      internalID: 885946290
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireParticleSprite_2
+      name: FireParticle_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
-        width: 8
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,41 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fab3d10a8a0fbe4a9852c9fae682670
-      internalID: 1256349835
+      spriteID: a9df1e27d987f7f4eae91f6c1849820d
+      internalID: -1783936952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireParticleSprite_3
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a86a06e4665d93c4b8003adce8f2b445
-      internalID: -1521934051
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireParticleSprite_4
+      name: FireParticle_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 8
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,8 +205,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 919aa118e86d1f04e9871950f7faa265
-      internalID: 2001349218
+      spriteID: 10c2b09908623bb4ba8b759ea88422f0
+      internalID: 2123976720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireParticle_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e0a48d7f103e0e468430d8009920fb7
+      internalID: -2026146128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireParticle_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8abe5796f457d7d49920e7c5921adc12
+      internalID: 1340351027
       vertices: []
       indices: 
       edges: []
@@ -264,11 +264,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fireParticleSprite_0: 1610372075
-      fireParticleSprite_1: 885946290
-      fireParticleSprite_2: 1256349835
-      fireParticleSprite_3: -1521934051
-      fireParticleSprite_4: 2001349218
+      FireParticle_0: 745906599
+      FireParticle_1: -1783936952
+      FireParticle_2: 2123976720
+      FireParticle_3: -2026146128
+      FireParticle_4: 1340351027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
