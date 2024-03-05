@@ -269,6 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPosition: {fileID: 6343708544695887828}
   speed: 0.2
+  UIBullet: {fileID: 0}
   waypoints:
   - {fileID: 1007337657260089434}
   - {fileID: 8097096544848673410}
@@ -281,6 +282,8 @@ MonoBehaviour:
   bulletType:
   - {fileID: 2775544907945190617, guid: be01359ddaf5bc246a633e18aa2ee576, type: 3}
   - {fileID: 2775544907945190617, guid: 7c01f001903c5a747b2682811a083c09, type: 3}
+  - {fileID: 8328817961718176193, guid: fe92d1812c4d51a4c949e0246d089df6, type: 3}
+  - {fileID: 8328817961718176193, guid: b1fd655166248674b9e5c8298fddc345, type: 3}
 --- !u!95 &8749272991308350574
 Animator:
   serializedVersion: 5
@@ -758,6 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   speed: 5
+  health: 4
   jumpForce: 8
   isJumping: 0
   jumpMultiplier: 3
@@ -768,6 +772,7 @@ MonoBehaviour:
   - {fileID: 5992499062478714876}
   - {fileID: 1061545060964811676}
   torchSpeed: 2.5
+  healthUI: {fileID: 0}
   fallMultiplier: -0.73
   coyoteTime: 0.1
 --- !u!114 &4162109077193662277

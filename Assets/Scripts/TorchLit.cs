@@ -9,12 +9,12 @@ public class TorchLit : MonoBehaviour
     private enum Status { Lit, Off };
     Status status = Status.Off;
     Animator animator;
-    Light2D light;
+    Light2D lightComp;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        light = GetComponent<Light2D>();
+        lightComp = GetComponent<Light2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,14 +40,14 @@ public class TorchLit : MonoBehaviour
             if (status == Status.Lit)
             {
                 animator.SetBool("Lit", true);
-                light.intensity = 14;
+                lightComp.intensity = 14;
             }
             else
             {
                 animator.SetBool("Lit", false);
-                while (light.intensity > 0)
+                while (lightComp.intensity > 0)
                 {
-                    light.intensity = 0;
+                    lightComp.intensity = 0;
                 }
                 
             }

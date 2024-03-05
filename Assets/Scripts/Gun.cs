@@ -28,6 +28,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private List<BasicBulletBehaviour> bulletType = new List<BasicBulletBehaviour>();
 
     // Start is called before the first frame update
+    [System.Obsolete]
     void Start()
     {
         animator = GetComponent<Animator>();

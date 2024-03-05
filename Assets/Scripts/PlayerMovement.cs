@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float torchSpeed;
     [SerializeField] GameObject healthUI;
     private Image healthUIImage;
+    private float iFrames = 0;
+    private float imageColor;
     private int jumpCount = 0; // Contador de saltos realizados
 
     [SerializeField] float fallMultiplier;
@@ -89,6 +91,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (iFrames > 0)
+        {
+            iFrames -= Time.deltaTime;
+        }
+
+        if (imageColor < 255)
+        {
+            imageColor += Time.deltaTime;
+            healthUIImage.color = new Color(255, imageColor, 255);
+        }
+
         if (!spriteRenderer.flipX)
         {
             torch.transform.position = Vector3.MoveTowards(torch.transform.position, torchWaypoints[0].transform.position, Time.deltaTime * torchSpeed);
@@ -171,12 +184,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
+        if (iFrames <= 0 && collision.gameObject.CompareTag("Enemy") || iFrames <= 0 && collision.gameObject.CompareTag("EnemyBullet"))
         {
-            health = health -1;
+            health = health - 1;
+            iFrames = 1.5f;
+            healthUIImage.color = new Color(255, 0, 255);
+            imageColor = 0;
             UpdateHealthUI();
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (iFrames <= 0 && collision.gameObject.CompareTag("Enemy") || iFrames <= 0 && collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            health = health - 1;
+            iFrames = 1.5f;
+            healthUIImage.color = new Color(255, 0, 255);
+            UpdateHealthUI();
+        }
+    }
+
+    
 
     private void UpdateHealthUI()
     {
