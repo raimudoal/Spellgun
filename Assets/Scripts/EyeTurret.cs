@@ -35,22 +35,29 @@ public class EyeTurret : EnemyBehaviour
 
         if (canAttack)
         {
+            animator.SetBool("Unactive", false);
             var dire = player.transform.position - transform.position;
             var angle = Mathf.Atan2(dire.y, dire.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             attackTimer += Time.deltaTime;
             if (attackTimer > 4.5f && !hasAnimated)
             {
-                //animator.Play("SkeletonThrow");
+                animator.SetBool("Attacking", true);
                 hasAnimated = true;
             }
-            if (attackTimer > 5)
+            if (attackTimer > 5.5f)
             {
                 EnemyBulletBehaviour projectile = Instantiate(enemyBullet, shootingPosition.position, transform.rotation);
                 projectile.LaunchProjectile(new Vector2(dire.x, dire.y));
                 attackTimer = 0;
                 hasAnimated = false;
+                animator.SetBool("Attacking", false);
             }
+        }
+        else
+        {
+            animator.SetBool("Unactive", true);
+            animator.SetBool("Attacking", false);
         }
     }
 }
