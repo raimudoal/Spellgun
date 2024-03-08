@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour
 
     private int bulletIndex = 0;
 
-    private int bullets = 6;
+    public int bullets = 6;
 
     private bool canShoot = true;
 
