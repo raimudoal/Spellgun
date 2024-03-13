@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class EyeTurret : EnemyBehaviour
 {
@@ -12,6 +13,9 @@ public class EyeTurret : EnemyBehaviour
     [SerializeField] Transform shootingPosition;
     [SerializeField] int dir;
     private bool hasAnimated = false;
+
+    private Light2D light2d;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +23,7 @@ public class EyeTurret : EnemyBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerMovement>();
         animator = GetComponent<Animator>();
+        light2d = GetComponent<Light2D>();
     }
 
     // Update is called once per frame
@@ -35,6 +40,7 @@ public class EyeTurret : EnemyBehaviour
 
         if (canAttack)
         {
+            light2d.intensity = 0.4f;
             animator.SetBool("Unactive", false);
             var dire = player.transform.position - transform.position;
             var angle = Mathf.Atan2(dire.y, dire.x) * Mathf.Rad2Deg;
@@ -58,6 +64,7 @@ public class EyeTurret : EnemyBehaviour
         {
             animator.SetBool("Unactive", true);
             animator.SetBool("Attacking", false);
+            light2d.intensity = 0.1f;
         }
     }
 }

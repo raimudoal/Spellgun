@@ -5,22 +5,28 @@ using UnityEngine;
 public class BasicBulletBehaviour : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private Sprite chargedStone;
     private float destroyDelay = 2f;
     private Rigidbody2D projectileRb;
     public int damage;
     public string element;
     public GameObject particleOnDeath;
     private Gun gun;
+    private SpriteRenderer spriteRenderer;
+    
     // Start is called before the first frame update
     private void Awake()
     {
         projectileRb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-
+        if (element.Equals("Stone") && gun.bullets == 4 || element.Equals("Stone") && gun.bullets == 5)
+        {
+            spriteRenderer.sprite = chargedStone;
+        }
     }
     public void LaunchProjectile(Vector2 direction)
     {
@@ -66,12 +72,5 @@ public class BasicBulletBehaviour : MonoBehaviour
                 col.GetComponent<Rigidbody2D>().AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : 250) * forceFalloff);
             }
         }
-    }
-
-    void AddExplosionForce2D(Collider2D col, Vector3 explosionOrigin, float explosionForce, float explosionRadius)
-    {
-        Vector3 direction = transform.position - explosionOrigin;
-        float forceFalloff = 1 - (direction.magnitude / explosionRadius);
-        col.GetComponent<Rigidbody2D>().AddForce(direction.normalized * (forceFalloff <= 0 ? 0 : explosionForce) * forceFalloff);
     }
 }

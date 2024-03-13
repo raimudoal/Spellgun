@@ -165,8 +165,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  chargedStone: {fileID: 0}
   damage: 1
   element: Water
+  particleOnDeath: {fileID: 0}
 --- !u!198 &3519739100841473767
 ParticleSystem:
   m_ObjectHideFlags: 0
