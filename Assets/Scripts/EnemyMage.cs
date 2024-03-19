@@ -33,7 +33,7 @@ public class EnemyMage : EnemyBehaviour
     {
         if (positions.Length != 0)
         {
-            if (Vector2.Distance(positions[current], transform.position) < 0.01f)
+            if (Vector2.Distance(positions[current], transform.position) < 1f)
             {
                 current = Random.Range(0, positions.Length);
                 if (current >= positions.Length)
@@ -42,9 +42,14 @@ public class EnemyMage : EnemyBehaviour
                 }
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, positions[current], Time.deltaTime * speed);
+            // Calcular la posición intermedia hacia el waypoint actual
+            Vector3 newPosition = Vector3.Slerp(transform.position, positions[current], Time.deltaTime * speed);
+
+            // Mover hacia la posición intermedia
+            transform.position = newPosition;
         }
     }
+
 
     private void SpeedChange()
     {
@@ -78,7 +83,7 @@ public class EnemyMage : EnemyBehaviour
         attackTimer += Time.deltaTime;
         if (attackTimer > 4.5f && !hasAnimated)
         {
-            //animator.SetBool("Attacking", true);
+            animator.SetBool("Attacking", true);
             hasAnimated = true;
         }
         if (attackTimer > 5.5f)
@@ -87,7 +92,7 @@ public class EnemyMage : EnemyBehaviour
             projectile.LaunchProjectile(new Vector2(dire.x, dire.y));
             attackTimer = 0;
             hasAnimated = false;
-            //animator.SetBool("Attacking", false);
+            animator.SetBool("Attacking", false);
         }
     }
 }
