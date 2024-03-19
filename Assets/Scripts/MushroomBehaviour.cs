@@ -82,7 +82,7 @@ public class MushroomBehaviour : EnemyBehaviour
             }
 
 
-            if (Vector3.Distance(new Vector3(player.transform.position.x, 0, 0), new Vector3(transform.position.x, 0, 0)) < 10)
+            if (Vector3.Distance(new Vector3(player.transform.position.x, 0, 0), new Vector3(transform.position.x, 0, 0)) < 10 && Vector3.Distance(new Vector3(0, playerPos.y, 0), new Vector3(0, transform.position.y, 0)) < 3)
             {
                 following = true;
 
