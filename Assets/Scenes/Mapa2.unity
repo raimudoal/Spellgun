@@ -190,11 +190,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 701339041022775342, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.534928
+      value: 10.1
       objectReference: {fileID: 0}
     - target: {fileID: 701339041022775342, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.6699247
+      value: -6.01
       objectReference: {fileID: 0}
     - target: {fileID: 701339041022775342, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_LocalPosition.z
@@ -227,6 +227,14 @@ PrefabInstance:
     - target: {fileID: 701339041022775342, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819770870801706326, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
+      propertyPath: pos1
+      value: -14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819770870801706326, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
+      propertyPath: pos2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7002029081881328027, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_Name
@@ -1200,11 +1208,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 701339041022775342, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.3650675
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 701339041022775342, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.738249
+      value: -4.86
       objectReference: {fileID: 0}
     - target: {fileID: 701339041022775342, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1237,6 +1245,14 @@ PrefabInstance:
     - target: {fileID: 701339041022775342, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819770870801706326, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
+      propertyPath: pos1
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819770870801706326, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
+      propertyPath: pos2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7002029081881328027, guid: a0adc564b66c5ba46bfd78d3935f5732, type: 3}
       propertyPath: m_Name
@@ -20707,9 +20723,9 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 567707465
+  m_SortingLayer: 2
+  m_SortingOrder: 32
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -20959,7 +20975,7 @@ TilemapCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

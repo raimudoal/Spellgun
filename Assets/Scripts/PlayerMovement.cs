@@ -205,7 +205,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (iFrames <= 0 && collision.gameObject.CompareTag("Enemy") || iFrames <= 0 && collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            health = health - 1;
+            iFrames = 1.5f;
+            healthUIImage.color = new Color(255, 0, 255);
+            imageColor = 0;
+            UpdateHealthUI();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (iFrames <= 0 && collision.gameObject.CompareTag("Enemy") || iFrames <= 0 && collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            health = health - 1;
+            iFrames = 1.5f;
+            healthUIImage.color = new Color(255, 0, 255);
+            UpdateHealthUI();
+        }
+    }
+
+
 
     private void UpdateHealthUI()
     {
