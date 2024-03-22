@@ -9,6 +9,7 @@ public class EnemyMage : EnemyBehaviour
     [SerializeField] Transform shootingPosition;
     [SerializeField] Vector3[] positions;
     [SerializeField] private EnemyBulletBehaviour enemyBullet;
+    [SerializeField] private DoubleProjectile doubleProjectile;
     private float attackTimer = 0.0f;
     private float speed;
     private int current = 0;
@@ -88,8 +89,17 @@ public class EnemyMage : EnemyBehaviour
         }
         if (attackTimer > 5.5f)
         {
-            EnemyBulletBehaviour projectile = Instantiate(enemyBullet, shootingPosition.position, shootingPosition.rotation);
-            projectile.LaunchProjectile(new Vector2(dire.x, dire.y));
+            if (Random.Range(0, 2) == 0)
+            {
+                EnemyBulletBehaviour projectile = Instantiate(enemyBullet, shootingPosition.position, shootingPosition.rotation);
+                projectile.LaunchProjectile(new Vector2(dire.x, dire.y));
+            }
+            else
+            {
+                DoubleProjectile projectile = Instantiate(doubleProjectile, player.transform.position, player.transform.rotation);
+                projectile.LaunchProjectile();
+            }
+
             attackTimer = 0;
             hasAnimated = false;
             animator.SetBool("Attacking", false);
