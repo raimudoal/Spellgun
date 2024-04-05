@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - EnemyBullet
   - HealthUI
+  - GlobalLight
   layers:
   - Default
   - TransparentFX

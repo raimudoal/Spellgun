@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -34,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     private float iFrames = 0;
     private float imageColor;
     private int jumpCount = 0; // Contador de saltos realizados
+    private bool isDead = false;
+    Light2D globalLight;
 
     [SerializeField] float fallMultiplier;
     Vector2 vecGravity;
@@ -47,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        globalLight = GetComponent<Light2D>();
         animator = GetComponent<Animator>();
         dustParticle = GetComponent<ParticleSystem>();
 
@@ -72,114 +77,127 @@ public class PlayerMovement : MonoBehaviour
     {
 
         // Obtener la entrada del jugador en el eje horizontal
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        if (!isDead)
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
 
-        transform.Translate(Vector2.right * speed * moveHorizontal * Time.deltaTime);
+            transform.Translate(Vector2.right * speed * moveHorizontal * Time.deltaTime);
 
+
+
+            // Girar el sprite según la dirección del movimiento
+            if (moveHorizontal > 0)
+            {
+                spriteRenderer.flipX = false;  // No voltear el sprite
+            }
+            else if (moveHorizontal < 0)
+            {
+                spriteRenderer.flipX = true;  // Voltear el sprite
+            }
+        }
         
-
-        // Girar el sprite según la dirección del movimiento
-        if (moveHorizontal > 0)
-        {
-            spriteRenderer.flipX = false;  // No voltear el sprite
-        }
-        else if (moveHorizontal < 0)
-        {
-            spriteRenderer.flipX = true;  // Voltear el sprite
-        }
     }
 
     private void Update()
     {
-        if (iFrames > 0)
+        if (!isDead)
         {
-            iFrames -= Time.deltaTime;
-        }
+            if (iFrames > 0)
+            {
+                iFrames -= Time.deltaTime;
+            }
 
-        if (imageColor < 255)
-        {
-            imageColor += Time.deltaTime;
-            healthUIImage.color = new Color(255, imageColor, 255);
-        }
+            if (imageColor < 255)
+            {
+                imageColor += Time.deltaTime;
+                healthUIImage.color = new Color(255, imageColor, 255);
+            }
 
-        if (!spriteRenderer.flipX)
-        {
-            torch.transform.position = Vector3.MoveTowards(torch.transform.position, torchWaypoints[0].transform.position, Time.deltaTime * torchSpeed);
+            if (health == 0 && !isDead)
+            {
+                StartCoroutine(DeathCoroutine());
+            }
 
-        }
-        else
-        {
-            torch.transform.position = Vector3.MoveTowards(torch.transform.position, torchWaypoints[1].transform.position, Time.deltaTime * torchSpeed);
-        }
-        if (Input.GetAxis("Horizontal") != 0.0f && !dustParticle.isPlaying && CheckGround.isGrounded)
-        {
-            dustParticle.Play();
-        }
-        else if (Input.GetAxis("Horizontal") == 0.0f && dustParticle.isPlaying || !CheckGround.isGrounded)
-        {
-            dustParticle.Stop();
-        }
+            if (!spriteRenderer.flipX)
+            {
+                torch.transform.position = Vector3.MoveTowards(torch.transform.position, torchWaypoints[0].transform.position, Time.deltaTime * torchSpeed);
 
-        if (Input.GetAxis("Horizontal") != 0.0000f)
-        {
-            animator.SetBool("run", true);
-        }
-        else
-        {
-            animator.SetBool("run", false);
-        }
+            }
+            else
+            {
+                torch.transform.position = Vector3.MoveTowards(torch.transform.position, torchWaypoints[1].transform.position, Time.deltaTime * torchSpeed);
+            }
+            if (Input.GetAxis("Horizontal") != 0.0f && !dustParticle.isPlaying && CheckGround.isGrounded)
+            {
+                dustParticle.Play();
+            }
+            else if (Input.GetAxis("Horizontal") == 0.0f && dustParticle.isPlaying || !CheckGround.isGrounded)
+            {
+                dustParticle.Stop();
+            }
 
-        animator.SetFloat("jump", playerrigidbody2D.velocity.y);
+            if (Input.GetAxis("Horizontal") != 0.0000f)
+            {
+                animator.SetBool("run", true);
+            }
+            else
+            {
+                animator.SetBool("run", false);
+            }
 
-        //SALTO PERSONAJE
-        if (jumpCount < 1 && Input.GetButtonDown("Jump") && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
-        {
-            playerrigidbody2D.velocity = new Vector2(playerrigidbody2D.velocity.x, jumpForce);
-            jumpCount++;
-            isJumping = true;
-            jumpTimer = 0;
-        }
+            animator.SetFloat("jump", playerrigidbody2D.velocity.y);
 
-        if (playerrigidbody2D.velocity.y > 0 && isJumping)
-        {
-            jumpTimer += Time.deltaTime;
-            if (jumpTimer > jumpTime)
+            //SALTO PERSONAJE
+            if (jumpCount < 1 && Input.GetButtonDown("Jump") && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
+            {
+                playerrigidbody2D.velocity = new Vector2(playerrigidbody2D.velocity.x, jumpForce);
+                jumpCount++;
+                isJumping = true;
+                jumpTimer = 0;
+            }
+
+            if (playerrigidbody2D.velocity.y > 0 && isJumping)
+            {
+                jumpTimer += Time.deltaTime;
+                if (jumpTimer > jumpTime)
+                {
+                    isJumping = false;
+                }
+                float t = jumpTimer / jumpTime;
+                float currentJumpM = jumpMultiplier;
+
+                if (t > 0.5f)
+                {
+                    currentJumpM = jumpMultiplier * (1 - t);
+                }
+                playerrigidbody2D.velocity += vecGravity * currentJumpM * Time.deltaTime;
+            }
+
+            if (playerrigidbody2D.velocity.y < 0)
+            {
+                playerrigidbody2D.velocity += vecGravity * fallMultiplier * Time.deltaTime;
+            }
+
+
+
+            if (Input.GetButtonUp("Jump"))
             {
                 isJumping = false;
             }
-            float t = jumpTimer / jumpTime;
-            float currentJumpM = jumpMultiplier;
 
-            if (t > 0.5f)
+            if (CheckGround.isGrounded)
             {
-                currentJumpM = jumpMultiplier * (1 - t);
+                coyoteTimer = 0f; // Reinicia el temporizador del coyote time si está en el suelo
+                jumpCount = 0; // Reinicia el contador de saltos si está en el suelo
+                animator.SetBool("grounded", true);
             }
-            playerrigidbody2D.velocity += vecGravity * currentJumpM * Time.deltaTime;
+            else
+            {
+                coyoteTimer += Time.deltaTime; // Incrementa el temporizador del coyote time si no está en el suelo
+                animator.SetBool("grounded", false);
+            }
         }
-
-        if (playerrigidbody2D.velocity.y < 0)
-        {
-            playerrigidbody2D.velocity += vecGravity * fallMultiplier * Time.deltaTime;
-        }
-
         
-
-        if (Input.GetButtonUp("Jump"))
-        {
-            isJumping = false;
-        }
-
-        if (CheckGround.isGrounded)
-        {
-            coyoteTimer = 0f; // Reinicia el temporizador del coyote time si está en el suelo
-            jumpCount = 0; // Reinicia el contador de saltos si está en el suelo
-            animator.SetBool("grounded", true);
-        }
-        else
-        {
-            coyoteTimer += Time.deltaTime; // Incrementa el temporizador del coyote time si no está en el suelo
-            animator.SetBool("grounded", false);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -233,5 +251,37 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateHealthUI()
     {
         healthUIImage.fillAmount = health / 4;
+    }
+
+    private IEnumerator DeathCoroutine()
+    {
+        Light2D light = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>();
+        dustParticle.Stop();
+        isDead = true; // Marcar al jugador como muerto para evitar ejecutar mltiples veces la rutina
+        animator.SetBool("die", true);
+        // Gradualmente oscurecer la luz global
+        float duration = 2f; // Duracin de la transicin
+        float elapsedTime = 0f;
+        Color initialColor = globalLight.color;
+        Color initialColor2 = light.color;
+
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("die", false);
+        while (elapsedTime < duration)
+        {
+            light.color = Color.Lerp(initialColor2, Color.black, elapsedTime / duration);
+            globalLight.color = Color.Lerp(initialColor, Color.black, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Mostrar mensaje "YOU LOSE"
+        Debug.Log("YOU LOSE");
+
+        // Esperar un breve momento antes de recargar la escena
+        yield return new WaitForSeconds(1f); // Puedes ajustar el tiempo sen tus necesidades
+
+        // Recargar la escena actual
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
