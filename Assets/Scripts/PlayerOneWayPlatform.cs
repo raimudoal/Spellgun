@@ -31,7 +31,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("OneWayPlatform"))
         {
             currentOneWayPlatform = collision.gameObject;
-            platformEffector = currentOneWayPlatform.GetComponentInParent<PlatformEffector2D>();
+            platformEffector = currentOneWayPlatform.GetComponent<PlatformEffector2D>();
             Debug.Log(currentOneWayPlatform);
         }
     }
