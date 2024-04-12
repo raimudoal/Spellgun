@@ -22,6 +22,9 @@ public class Dialogue
     public List<DialogueLine> dialogueLines = new List<DialogueLine>();
 }
 
+
+
+
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
