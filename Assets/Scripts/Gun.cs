@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     private float WPradius = 0.01f;
     public float speed;
     [SerializeField] private Transform UIBullet;
+    [SerializeField] private bool water = false, electric = false, stone = false;
 
     int target = 0;
     float r;
@@ -127,6 +128,7 @@ public class Gun : MonoBehaviour
 
     private void ChangeBullet()
     {
+
         if (bulletIndex == bulletType.Count -1)
         {
             bulletIndex = 0;
@@ -134,9 +136,38 @@ public class Gun : MonoBehaviour
         else
         {
             bulletIndex++;
+            if (bulletIndex == 1 && !water)
+            {
+                ChangeBullet();
+            }
+            else if (bulletIndex == 2 && !electric)
+            {
+                ChangeBullet();
+            }
+            else if(bulletIndex == 3 && !stone)
+            {
+                ChangeBullet();
+            }
         }
         target = target - 90;
+    }
 
+    public void UnlockBulletType(int type)
+    {
+        switch (type)
+        {
+            case 0:
+                water = true;
+                break;
+            case 1:
+                electric = true;
+                break;
+            case 2:
+                stone = true;
+                break;
+            default:
+                break;
 
+        }
     }
 }
