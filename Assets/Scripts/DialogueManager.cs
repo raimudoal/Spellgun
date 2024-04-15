@@ -28,6 +28,17 @@ public class DialogueManager : MonoBehaviour
         lines = new Queue<DialogueLine>();
     }
 
+    private void Update()
+    {
+        if (isDialogueActive)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                DisplayNextDialogueLine();
+            }
+        }
+    }
+
     public void StartDialogue(Dialogue dialogue)
     {
         isDialogueActive = true;

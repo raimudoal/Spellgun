@@ -279,7 +279,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("YOU LOSE");
 
         // Esperar un breve momento antes de recargar la escena
-        yield return new WaitForSeconds(1f); // Puedes ajustar el tiempo sen tus necesidades
+        yield return new WaitForSeconds(3f); // Puedes ajustar el tiempo sen tus necesidades
 
         // Recargar la escena actual
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
