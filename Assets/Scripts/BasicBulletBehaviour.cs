@@ -49,6 +49,19 @@ public class BasicBulletBehaviour : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag.Equals("Enemy"))
+        {
+            Destroy(gameObject);
+            if (particleOnDeath)
+            {
+                GameObject explosion = Instantiate(particleOnDeath, transform.position, transform.rotation);
+                Destroy(explosion, 1);
+            }
+        }
+    }
+
     void OnEnable()
     {
         GameObject[] otherObjects = GameObject.FindGameObjectsWithTag("Player");

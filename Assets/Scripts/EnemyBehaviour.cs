@@ -66,6 +66,54 @@ public class EnemyBehaviour : MonoBehaviour
             Knockback(collision);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            GetHit(collision.gameObject.GetComponent<BasicBulletBehaviour>().damage);
+            switch (collision.gameObject.GetComponent<BasicBulletBehaviour>().element)
+            {
+                case "Fire":
+                    if (status == Status.Wet)
+                    {
+                        Console.WriteLine("Normal");
+                        status = Status.Normal;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enemy Burnt");
+                        status = Status.Burnt;
+                    }
+                    break;
+
+                case "Water":
+                    if (status == Status.Burnt)
+                    {
+                        Console.WriteLine("Normal");
+                        status = Status.Normal;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enemy Wet");
+                        status = Status.Wet;
+                    }
+                    break;
+
+                case "Normal":
+                    Console.WriteLine("Normal");
+                    break;
+            }
+
+            ChangeStatus();
+            Knockback(collision);
+        }
+    }
+
+    private void Knockback(Collider2D collider)
+    {
+        var direction = (collider.transform.position - transform.position).normalized;
+        rb.AddForce(-direction * 10);
+    }
 
     private void Knockback(Collision2D collision)
     {
