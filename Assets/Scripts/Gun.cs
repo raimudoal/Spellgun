@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Gun : MonoBehaviour
     public float speed;
     [SerializeField] private Transform UIBullet;
     [SerializeField] private bool water = false, electric = false, stone = false;
+    [SerializeField] private Image[] bulletsUI;
+    [SerializeField] private Sprite[] bulletsImage;
 
     int target = 0;
     float r;
@@ -76,7 +79,7 @@ public class Gun : MonoBehaviour
                 animator.Play("GunShoot");
                 bullets--;
                 StartCoroutine(ShootDelay());
-                
+                BulletsUpdateUI();
                 //SONIDO DE DISPARO
             }
             else
@@ -110,6 +113,21 @@ public class Gun : MonoBehaviour
         yield return new WaitForSeconds(1.20f);
         canShoot = true;
         animator.SetBool("Reloading", false);
+        for (int i = 0; i < bulletsUI.Length; i++)
+        {
+            bulletsUI[i].sprite = bulletsImage[0];
+        }
+    }
+
+    private void BulletsUpdateUI()
+    {
+        int num = bulletsUI.Length - bullets  ;
+        Debug.Log(num);
+
+        for (int i = 0; i < (num); i++) 
+        {
+            bulletsUI[i].sprite = bulletsImage[1];
+        }
     }
 
     private void MoveBetweenWaypoints()
