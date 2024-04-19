@@ -266,6 +266,7 @@ public class PlayerMovement : MonoBehaviour
         Color initialColor2 = light.color;
 
         yield return new WaitForSeconds(0.5f);
+        animator.SetBool("muriendo", true);
         animator.SetBool("die", false);
         while (elapsedTime < duration)
         {
@@ -280,8 +281,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Esperar un breve momento antes de recargar la escena
         yield return new WaitForSeconds(3f); // Puedes ajustar el tiempo sen tus necesidades
-
+        
         // Recargar la escena actual
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        animator.SetBool("muriendo", false);
     }
 }
