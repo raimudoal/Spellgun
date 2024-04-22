@@ -12,10 +12,26 @@ public class EnemyBehaviour : MonoBehaviour
     Status status = Status.Normal;
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
+    private AudioSource audioSource;
+    public AudioClip soundEnemy;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = soundEnemy;
+    }
+
+    public void PlaySound()
+    {
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+    }
     private void GetHit(int damage)
     {
         health = health - damage;
+        PlaySound();
         if (health <= 0)
         {
             Destroy(gameObject);
