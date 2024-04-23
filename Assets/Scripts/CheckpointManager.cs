@@ -5,19 +5,28 @@ using UnityEngine;
 public class CheckpointManager : MonoBehaviour
 {
 
-    public GameObject[] checkPoints;
+    public CheckPoint[] checkPoints;
     public int lastCheckpointIndex = 0;
     private Vector3 lastCheckPoint;
 
-    void Start()
+    void Awake()
     {
-        
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("controller");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+
+        GetAllCheckPoints();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void GetAllCheckPoints()
     {
-        
+        checkPoints = null;
+        checkPoints = FindObjectsOfType<CheckPoint>();
     }
 
     public void LastCheckpointActive()
