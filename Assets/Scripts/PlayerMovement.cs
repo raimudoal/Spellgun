@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerrigidbody2D;
     private SpriteRenderer spriteRenderer;  // Referencia al componente SpriteRenderer del personaje
 
+    private GameObject hidder;
     // SALTO DEL JUGADOR
 
     public float health = 4;
@@ -46,8 +47,9 @@ public class PlayerMovement : MonoBehaviour
     private float coyoteTimer = 0f; // Temporizador del coyote time   (Empieza cuando el personaje deja de estar en el suelo)
 
     private Animator animator;
+    Animator hidderAnimator;
 
-    
+
 
     private void Awake()
     {
@@ -63,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Obtener la referencia al componente SpriteRenderer
         spriteRenderer = GetComponent<SpriteRenderer>();
+        hidder = GameObject.FindGameObjectWithTag("scenehidder");
+
+        hidderAnimator = hidder.GetComponent<Animator>();
     }
 
     private void Start()
@@ -278,12 +283,15 @@ public class PlayerMovement : MonoBehaviour
 
         // Mostrar mensaje "YOU LOSE"
         Debug.Log("YOU LOSE");
-
+        hidderAnimator.Play("sceneHidderIn");
         // Esperar un breve momento antes de recargar la escena
         yield return new WaitForSeconds(3f); // Puedes ajustar el tiempo sen tus necesidades
         
         // Recargar la escena actual
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         animator.SetBool("muriendo", false);
+        yield return new WaitForSeconds(2f);
+        hidderAnimator.Play("sceneHidderOut");
+
     }
 }

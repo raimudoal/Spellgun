@@ -7,11 +7,12 @@ public class CheckpointManager : MonoBehaviour
 
     public GameObject[] checkPoints;
     public int lastCheckpointIndex = 0;
-    private Vector3 lastCheckPoint;
+    public Vector3 lastCheckPoint;
+    PlayerReset playerReset;
 
     void Start()
     {
-        
+        playerReset = FindObjectOfType<PlayerReset>();
     }
 
     // Update is called once per frame
@@ -28,6 +29,7 @@ public class CheckpointManager : MonoBehaviour
             {
                 checkPoints[i].GetComponent<Animator>().SetBool("active", true);
                 lastCheckPoint = checkPoints[i].transform.position;
+                playerReset.lastCheckPointSaved = lastCheckPoint;
             }
             else
             {
