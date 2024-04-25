@@ -84,6 +84,7 @@ public class EnemyMage : EnemyBehaviour
         attackTimer += Time.deltaTime;
         if (attackTimer > 4.5f && !hasAnimated)
         {
+            audioManager.PlaySFX(audioManager.enemyMageStartAttack);
             animator.SetBool("Attacking", true);
             hasAnimated = true;
         }
@@ -91,11 +92,13 @@ public class EnemyMage : EnemyBehaviour
         {
             if (Random.Range(0, 2) == 0)
             {
+                audioManager.PlaySFX(audioManager.enemyMageShoot);
                 EnemyBulletBehaviour projectile = Instantiate(enemyBullet, shootingPosition.position, shootingPosition.rotation);
                 projectile.LaunchProjectile(new Vector2(dire.x, dire.y));
             }
             else
             {
+                audioManager.PlaySFX(audioManager.handSpawn);
                 DoubleProjectile projectile = Instantiate(doubleProjectile, player.transform.position, player.transform.rotation);
                 projectile.LaunchProjectile();
             }

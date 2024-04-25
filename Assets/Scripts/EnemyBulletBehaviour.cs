@@ -9,26 +9,22 @@ public class EnemyBulletBehaviour : MonoBehaviour
     private Rigidbody2D projectileRb;
     public int damage;
     public GameObject particleOnDeath;
+    AudioManager audioManager;
     // Start is called before the first frame update
     private void Awake()
     {
         projectileRb = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
     }
     public void LaunchProjectile(Vector2 direction)
     {
         projectileRb.velocity = direction * speed;
         Destroy(gameObject, destroyDelay);
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        audioManager.PlaySFX(audioManager.enemyProjectileHit);
         Destroy(gameObject);
         if (particleOnDeath)
         {

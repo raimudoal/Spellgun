@@ -190,6 +190,7 @@ MonoBehaviour:
   enemyExploision: {fileID: 0}
   spriteRenderer: {fileID: 0}
   rb: {fileID: 0}
+  audioManager: {fileID: 0}
   shootingPosition: {fileID: 7835715983439691573}
   positions:
   - {x: 139, y: 4.5, z: 0}

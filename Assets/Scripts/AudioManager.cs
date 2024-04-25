@@ -7,7 +7,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
 
     [Header("-------------Audio Clip-------------")]
-    public AudioClip background;
+    public bool Dungeon;
+    public AudioClip background1;
+    public AudioClip background2;
     public AudioClip enemyDeath;
     public AudioClip enemyHurt;
     public AudioClip jump;
@@ -18,11 +20,23 @@ public class AudioManager : MonoBehaviour
     public AudioClip skeletonThrow;
     public AudioClip slimeFall;
     public AudioClip slimeGround;
+    public AudioClip handSpawn;
+    public AudioClip handMove;
+    public AudioClip enemyMageStartAttack;
+    public AudioClip enemyProjectileHit;
+    public AudioClip enemyMageShoot;
 
     private void Start()
     {
-        //musicSource.clip = background;
-        //musicSource.Play();
+        if (!Dungeon)
+        {
+            musicSource.clip = background1;
+        }
+        else
+        {
+            musicSource.clip = background2;
+        }
+        musicSource.Play();
     }
 
     public void PlaySFX(AudioClip clip)

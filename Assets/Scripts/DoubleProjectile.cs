@@ -9,17 +9,11 @@ public class DoubleProjectile : MonoBehaviour
     private float destroyDelay = 3f;
     float speed = 20;
     public GameObject particleOnDeath;
+    AudioManager audioManager;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
     }
 
     public void LaunchProjectile()
@@ -30,6 +24,7 @@ public class DoubleProjectile : MonoBehaviour
     IEnumerator LaunchDelay()
     {
         yield return new WaitForSeconds(0.5f);
+        audioManager.PlaySFX(audioManager.handMove);
         leftProjectile.GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
         rightProjectile.GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
         Destroy(gameObject, destroyDelay);

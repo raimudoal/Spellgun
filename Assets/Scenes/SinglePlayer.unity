@@ -1083,7 +1083,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line
-      value: Use WASD to move your player.
+      value: Use WASD to move your player. You can also press [E] to pass to next
+        dialogue or to close it.
       objectReference: {fileID: 0}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
@@ -53250,7 +53251,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1936921500}
   SFXSource: {fileID: 1936921499}
-  background: {fileID: 0}
+  Dungeon: 0
+  background1: {fileID: 0}
+  background2: {fileID: 0}
   enemyDeath: {fileID: 8300000, guid: fec8108b72cb6264ca117bc44a57e809, type: 3}
   enemyHurt: {fileID: 8300000, guid: 3f7563c513bd3a64c9ef3b07347ef226, type: 3}
   jump: {fileID: 8300000, guid: e8278874feab45547ada18dede2c0164, type: 3}
@@ -53261,6 +53264,11 @@ MonoBehaviour:
   skeletonThrow: {fileID: 8300000, guid: 5c872ad23c1d25f4181405e74b70f804, type: 3}
   slimeFall: {fileID: 8300000, guid: 72a25fc28d0ae82499a403a76b35df89, type: 3}
   slimeGround: {fileID: 8300000, guid: 7e177a5836503cc488f33ff629ff65ab, type: 3}
+  handSpawn: {fileID: 8300000, guid: 33c24c3c06b871141b157e6b4fd3cb28, type: 3}
+  handMove: {fileID: 8300000, guid: 493ff0f3cf8357d41bb40a8aebe97170, type: 3}
+  enemyMageStartAttack: {fileID: 8300000, guid: 304e458db2f1d674585e2d1decff719a, type: 3}
+  enemyProjectileHit: {fileID: 8300000, guid: 0d01da6afc4415a4c90fca5ea8fe8fbe, type: 3}
+  enemyMageShoot: {fileID: 8300000, guid: 8b5cc8c10bd6c964f9119e49ef14c8a3, type: 3}
 --- !u!4 &1936921502
 Transform:
   m_ObjectHideFlags: 0
