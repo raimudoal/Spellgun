@@ -1087,7 +1087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
-      value: HINTS
+      value: HINT
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -46506,6 +46506,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].line
+      value: Use your mouse to aim, [M1] to shoot, [R] to reload and [B] to change
+        bullets.
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.name
+      value: HINT
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48864,15 +48877,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line
-      value: mememememe
+      value: Holding [Space] will make your jump higher.
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line
+      value: Pressing [S] on specific platforms will make you fall.
       objectReference: {fileID: 0}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
-      value: HINTS
+      value: HINT
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.name
+      value: HINT
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
