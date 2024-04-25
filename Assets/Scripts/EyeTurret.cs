@@ -53,6 +53,7 @@ public class EyeTurret : EnemyBehaviour
             }
             if (attackTimer > 5.5f)
             {
+                audioManager.PlaySFX(audioManager.pepAttack);
                 EnemyBulletBehaviour projectile = Instantiate(enemyBullet, shootingPosition.position, transform.rotation);
                 projectile.LaunchProjectile(new Vector2(dire.x, dire.y));
                 attackTimer = 0;

@@ -16,6 +16,7 @@ TagManager:
   - controller
   - resetter
   - scenehidder
+  - audio
   layers:
   - Default
   - TransparentFX

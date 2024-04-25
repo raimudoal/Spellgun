@@ -35,6 +35,7 @@ public class SlimeBehaviour : EnemyBehaviour
 
         if (active && !once)
         {
+            audioManager.PlaySFX(audioManager.slimeFall);
             ownParticleSystem.enableEmission = false;
             rb.bodyType = RigidbodyType2D.Dynamic;
             circleCollider.offset = new Vector2(-0.007697105f, 0);
@@ -51,6 +52,7 @@ public class SlimeBehaviour : EnemyBehaviour
         {
             if (collision.tag.Equals("Ground"))
             {
+                audioManager.PlaySFX(audioManager.slimeGround);
                 outerParticleSystem.enableEmission = true;
                 active = false;
                 circleCollider.enabled = false;

@@ -8,32 +8,21 @@ public class EnemyBehaviour : MonoBehaviour
 
     public int health;
     [SerializeField] GameObject enemyExploision;
-    private enum Status { Normal, Wet, Burnt };
-    Status status = Status.Normal;
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
-    private AudioSource audioSource;
-    public AudioClip soundEnemy;
-
-    private void Start()
+    public AudioManager audioManager;
+    private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = soundEnemy;
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
     }
 
-    public void PlaySound()
-    {
-        if (audioSource != null && !audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
-    }
     private void GetHit(int damage)
     {
         health = health - damage;
-        PlaySound();
+        audioManager.PlaySFX(audioManager.enemyHurt);
         if (health <= 0)
         {
+            audioManager.PlaySFX(audioManager.enemyDeath);
             Destroy(gameObject);
             GameObject explosion = Instantiate(enemyExploision, transform.position, transform.rotation);
             Destroy(explosion, 1);
@@ -45,40 +34,6 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             GetHit(collision.gameObject.GetComponent<BasicBulletBehaviour>().damage);
-            switch (collision.gameObject.GetComponent<BasicBulletBehaviour>().element)
-            {
-                case "Fire":
-                    if (status == Status.Wet)
-                    {
-                        Console.WriteLine("Normal");
-                        status = Status.Normal;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enemy Burnt");
-                        status = Status.Burnt;
-                    }
-                    break;
-
-                case "Water":
-                    if (status == Status.Burnt)
-                    {
-                        Console.WriteLine("Normal");
-                        status = Status.Normal;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enemy Wet");
-                        status = Status.Wet;
-                    }
-                    break;
-
-                case "Normal":
-                    Console.WriteLine("Normal");
-                    break;
-            }
-
-            ChangeStatus();
             Knockback(collision);
         }
     }
@@ -87,40 +42,6 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             GetHit(collision.gameObject.GetComponent<BasicBulletBehaviour>().damage);
-            switch (collision.gameObject.GetComponent<BasicBulletBehaviour>().element)
-            {
-                case "Fire":
-                    if (status == Status.Wet)
-                    {
-                        Console.WriteLine("Normal");
-                        status = Status.Normal;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enemy Burnt");
-                        status = Status.Burnt;
-                    }
-                    break;
-
-                case "Water":
-                    if (status == Status.Burnt)
-                    {
-                        Console.WriteLine("Normal");
-                        status = Status.Normal;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enemy Wet");
-                        status = Status.Wet;
-                    }
-                    break;
-
-                case "Normal":
-                    Console.WriteLine("Normal");
-                    break;
-            }
-
-            ChangeStatus();
             Knockback(collision);
         }
     }
@@ -135,22 +56,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         var direction = (collision.transform.position - transform.position).normalized;
         rb.AddForce(-direction * 10);
-    }
-
-    private void ChangeStatus()
-    {
-        switch (status) 
-        {
-            case Status.Burnt:
-                spriteRenderer.color = Color.red;
-                break;
-            case Status.Wet:
-                spriteRenderer.color = Color.blue;
-                break;
-            case Status.Normal:
-                spriteRenderer.color = Color.white;
-                break;
-        }
     }
 
 }

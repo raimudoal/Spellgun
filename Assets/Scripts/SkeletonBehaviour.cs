@@ -41,6 +41,7 @@ public class SkeletonBehaviour : EnemyBehaviour
             }
             if (attackTimer > 5)
             {
+                audioManager.PlaySFX(audioManager.skeletonThrow);
                 EnemyBulletBehaviour projectile = Instantiate(enemyBullet, shootingPosition.position, transform.rotation);
                 projectile.LaunchProjectile(new Vector2(dir, 0));
                 attackTimer = 0;

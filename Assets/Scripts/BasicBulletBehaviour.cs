@@ -13,16 +13,20 @@ public class BasicBulletBehaviour : MonoBehaviour
     public GameObject particleOnDeath;
     private Gun gun;
     private SpriteRenderer spriteRenderer;
+    AudioManager audioManager;
     
     // Start is called before the first frame update
     private void Awake()
     {
         projectileRb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+
     }
 
     private void Start()
     {
+        audioManager.PlaySFX(audioManager.shoot);
         if (element.Equals("Stone") && gun.bullets == 4 || element.Equals("Stone") && gun.bullets == 5)
         {
             spriteRenderer.sprite = chargedStone;
@@ -47,12 +51,14 @@ public class BasicBulletBehaviour : MonoBehaviour
             GameObject explosion = Instantiate(particleOnDeath, transform.position, transform.rotation);
             Destroy(explosion, 1);
         }
+        audioManager.PlaySFX(audioManager.projectileHit);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag.Equals("Enemy"))
         {
+            audioManager.PlaySFX(audioManager.projectileHit);
             Destroy(gameObject);
             if (particleOnDeath)
             {

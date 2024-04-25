@@ -48,7 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator animator;
     Animator hidderAnimator;
-
+    AudioManager audioManager;
+    [SerializeField] AudioSource audioSource;
 
 
     private void Awake()
@@ -68,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
         hidder = GameObject.FindGameObjectWithTag("scenehidder");
 
         hidderAnimator = hidder.GetComponent<Animator>();
+
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
     }
 
     private void Start()
@@ -134,10 +137,12 @@ public class PlayerMovement : MonoBehaviour
             }
             if (Input.GetAxis("Horizontal") != 0.0f && !dustParticle.isPlaying && CheckGround.isGrounded)
             {
+                audioSource.Play();
                 dustParticle.Play();
             }
             else if (Input.GetAxis("Horizontal") == 0.0f && dustParticle.isPlaying || !CheckGround.isGrounded)
             {
+                audioSource.Stop();
                 dustParticle.Stop();
             }
 
@@ -155,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
             //SALTO PERSONAJE
             if (jumpCount < 1 && Input.GetButtonDown("Jump") && (CheckGround.isGrounded || coyoteTimer < coyoteTime))
             {
+                audioManager.PlaySFX(audioManager.jump);
                 playerrigidbody2D.velocity = new Vector2(playerrigidbody2D.velocity.x, jumpForce);
                 jumpCount++;
                 isJumping = true;

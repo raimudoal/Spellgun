@@ -51,7 +51,6 @@ public class MushroomBehaviour : EnemyBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, 0, 0), Time.deltaTime * 3.5f);
                 followTimer += Time.deltaTime;
-                Debug.Log(followTimer);
             }
 
             if (followTimer > 4.0f)
@@ -66,7 +65,6 @@ public class MushroomBehaviour : EnemyBehaviour
                     playerPos = player.transform.position - new Vector3(20, 0, 0);
                 }
                 attacking = true;
-                Debug.Log("START ATTACK");
             }
 
             if (!following)
@@ -99,7 +97,6 @@ public class MushroomBehaviour : EnemyBehaviour
             attackTimer += Time.deltaTime;
             if ((new Vector3(playerPos.x ,0,0) - new Vector3(transform.position.x,0,0)).sqrMagnitude < 0.5f || attackTimer >= 5)
             {
-                Debug.Log("STOPP ATTACK");
                 attackTimer = 0;
                 attacking = false;
             }
