@@ -18,6 +18,7 @@ public class VolumeBar : MonoBehaviour
         {
             Load();
         }
+        ChangeVolume();
     }
 
     public void ChangeVolume()
@@ -33,5 +34,6 @@ public class VolumeBar : MonoBehaviour
     public void Save()
     {
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        ChangeVolume();
     }
 }
