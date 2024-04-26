@@ -47,6 +47,8 @@ public class Gun : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         Random.seed = System.DateTime.Now.Millisecond;
         ChangeBullet();
+        ChangeBullet();
+        ChangeBullet();
         fire = playerReset.fire;
         water = playerReset.water;
         stone = playerReset.stone;
