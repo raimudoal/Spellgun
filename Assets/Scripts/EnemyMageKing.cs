@@ -22,6 +22,8 @@ public class EnemyMageKing : EnemyBehaviour
     private int current = 0;
     private bool hasAnimated = false;
 
+    [SerializeField] GameObject crown;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -40,7 +42,7 @@ public class EnemyMageKing : EnemyBehaviour
 
     private void OnDestroy()
     {
-        
+        Instantiate(crown, transform.position, Quaternion.identity);
     }
 
     private void MoveBetweenWaypoints()

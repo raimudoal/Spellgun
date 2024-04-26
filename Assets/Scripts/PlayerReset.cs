@@ -13,7 +13,7 @@ public class PlayerReset : MonoBehaviour
 
     public bool fire;
     public bool water;
-    public bool electric;
+    public bool electric = true;
     public bool stone;
 
     // Start is called before the first frame update

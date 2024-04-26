@@ -166,9 +166,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  chargedStone: {fileID: 0}
   damage: 2
   element: Electric
-  particleOnDeath: {fileID: 0}
+  particleOnDeath: {fileID: 5435607737554505745, guid: 9d34c64a3e5252c46ac3835576871356, type: 3}
 --- !u!198 &8835106994289118765
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -49,7 +49,6 @@ public class Gun : MonoBehaviour
         ChangeBullet();
         fire = playerReset.fire;
         water = playerReset.water;
-        electric = playerReset.electric;
         stone = playerReset.stone;
     }
 
@@ -66,9 +65,6 @@ public class Gun : MonoBehaviour
 
             if (stone)
                 playerReset.stone = true;
-
-            if (electric)
-                playerReset.electric = true;
 
             float Angle = Mathf.SmoothDampAngle(UIBullet.eulerAngles.z, target, ref r, 0.1f);
             UIBullet.rotation = Quaternion.Euler(0, 0, Angle);

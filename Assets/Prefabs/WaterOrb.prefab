@@ -168,7 +168,7 @@ MonoBehaviour:
   chargedStone: {fileID: 0}
   damage: 1
   element: Water
-  particleOnDeath: {fileID: 0}
+  particleOnDeath: {fileID: 5435607737554505745, guid: b2d86f7ba5d7ff245af8f6f4539310f1, type: 3}
 --- !u!198 &3519739100841473767
 ParticleSystem:
   m_ObjectHideFlags: 0

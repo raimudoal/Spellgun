@@ -8,8 +8,10 @@ public class AudioManager : MonoBehaviour
 
     [Header("-------------Audio Clip-------------")]
     public bool Dungeon;
+    public bool Boss;
     public AudioClip background1;
     public AudioClip background2;
+    public AudioClip bossMusic;
     public AudioClip enemyDeath;
     public AudioClip enemyHurt;
     public AudioClip jump;
@@ -37,6 +39,10 @@ public class AudioManager : MonoBehaviour
         {
             musicSource.clip = background2;
         }
+
+        if(Boss)
+            musicSource.clip = bossMusic;
+
         musicSource.Play();
     }
 
