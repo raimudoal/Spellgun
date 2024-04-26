@@ -213,12 +213,15 @@ public class Gun : MonoBehaviour
         switch (type)
         {
             case 0:
-                water = true;
+                fire = true;
                 break;
             case 1:
-                electric = true;
+                water = true;
                 break;
             case 2:
+                electric = true;
+                break;
+            case 3:
                 stone = true;
                 break;
             default:
