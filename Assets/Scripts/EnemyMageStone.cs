@@ -67,23 +67,23 @@ public class EnemyMageStone : EnemyBehaviour
     {
         if (health > 80)
         {
-            speed = 1;
+            speed = 0.2f;
         }
         else if (health > 150)
         {
-            speed = 1.5f;
+            speed = 0.4f;
         }
         else if (health > 25)
         {
-            speed = 2;
+            speed = 0.5f;
         }
         else if (health > 10)
         {
-            speed = 2.5f;
+            speed = 0.7f;
         }
         else 
         {
-            speed = 3;
+            speed = 0.8f;
         }
     }
 
@@ -111,6 +111,10 @@ public class EnemyMageStone : EnemyBehaviour
             {
                 audioManager.PlaySFX(audioManager.handSpawn);
                 StoneFall stones = Instantiate(stoneFall, new Vector3(Random.Range(236,268), Random.Range(-28,-37), 0), Quaternion.identity);
+                StoneFall stones1 = Instantiate(stoneFall, new Vector3(Random.Range(236, 268), Random.Range(-28, -37), 0), Quaternion.identity);
+                StoneFall stones2 = Instantiate(stoneFall, new Vector3(Random.Range(236, 268), Random.Range(-28, -37), 0), Quaternion.identity);
+                StoneFall stones3 = Instantiate(stoneFall, new Vector3(Random.Range(236, 268), Random.Range(-28, -37), 0), Quaternion.identity);
+
             }
 
             attackTimer = 0;

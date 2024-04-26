@@ -5,8 +5,6 @@ using UnityEngine;
 public class FollowEnemyBullet : MonoBehaviour
 {
     [SerializeField] private float speed;
-    private float destroyDelay = 3f;
-    private Rigidbody2D projectileRb;
     public int damage;
     public GameObject particleOnDeath;
     AudioManager audioManager;
@@ -15,10 +13,10 @@ public class FollowEnemyBullet : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        projectileRb = GetComponent<Rigidbody2D>();
         audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
         player = FindObjectOfType<PlayerMovement>();
         StartCoroutine(firstWait());
+        Destroy(gameObject, 10);
     }
     private void Update()
     {
@@ -27,7 +25,7 @@ public class FollowEnemyBullet : MonoBehaviour
             var dire = player.transform.position - transform.position;
             var angle = Mathf.Atan2(dire.y, dire.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, 0), Time.deltaTime * 4f);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, 0), Time.deltaTime * Random.Range(3,8));
         }
     }
 

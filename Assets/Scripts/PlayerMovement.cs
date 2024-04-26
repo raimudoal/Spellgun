@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         hidderAnimator = hidder.GetComponent<Animator>();
 
         audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
+        gameController = GameObject.FindGameObjectWithTag("controller").GetComponent<GameController>();
     }
 
     private void Start()
@@ -110,6 +111,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isDead)
         {
+            if (transform.position.y < gameController.deathPos)
+            {
+                StartCoroutine(DeathCoroutine());
+            }
             if (iFrames > 0)
             {
                 iFrames -= Time.deltaTime;
