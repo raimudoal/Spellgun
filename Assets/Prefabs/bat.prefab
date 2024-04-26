@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -18216243
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1170367571, guid: 21b9012e55e65584cb241d2f9189d0f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -104,6 +104,7 @@ MonoBehaviour:
   enemyExploision: {fileID: 5435607737554505745, guid: b9d73874d2aea47419c55efc69bcf295, type: 3}
   spriteRenderer: {fileID: 0}
   rb: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!61 &5572998245908921130
 BoxCollider2D:
   m_ObjectHideFlags: 0
