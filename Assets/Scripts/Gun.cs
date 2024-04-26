@@ -43,63 +43,66 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float Angle = Mathf.SmoothDampAngle(UIBullet.eulerAngles.z, target, ref r, 0.1f);
-        UIBullet.rotation = Quaternion.Euler(0, 0, Angle);
-
-        if (canShoot && Input.GetKeyDown(KeyCode.B))
+        if (Time.timeScale != 0.0f)
         {
-            ChangeBullet();
-        }
-        if (!animator.GetBool("Reloading"))
-        {
-            var pos = Camera.main.WorldToScreenPoint(transform.position);
-            var dir = Input.mousePosition - pos;
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            float Angle = Mathf.SmoothDampAngle(UIBullet.eulerAngles.z, target, ref r, 0.1f);
+            UIBullet.rotation = Quaternion.Euler(0, 0, Angle);
 
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (mousePos.x > transform.position.x)
+            if (canShoot && Input.GetKeyDown(KeyCode.B))
             {
-                spriteRenderer.flipY = false;
+                ChangeBullet();
             }
-            else if (mousePos.x < transform.position.x)
+            if (!animator.GetBool("Reloading"))
             {
-                spriteRenderer.flipY = true;
-            }
-        }
-        
-        if (Input.GetMouseButtonDown(0) && !animator.GetBool("Reloading"))
-        {
+                var pos = Camera.main.WorldToScreenPoint(transform.position);
+                var dir = Input.mousePosition - pos;
+                var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            if (bullets > 0 && canShoot)
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (mousePos.x > transform.position.x)
+                {
+                    spriteRenderer.flipY = false;
+                }
+                else if (mousePos.x < transform.position.x)
+                {
+                    spriteRenderer.flipY = true;
+                }
+            }
+
+            if (Input.GetMouseButtonDown(0) && !animator.GetBool("Reloading"))
+            {
+
+                if (bullets > 0 && canShoot)
+                {
+                    canShoot = false;
+                    BasicBulletBehaviour projectile = Instantiate(bulletType[bulletIndex], shootPosition.position, transform.rotation);
+                    projectile.LaunchProjectile(transform.right);
+                    animator.Play("GunShoot");
+                    bullets--;
+                    StartCoroutine(ShootDelay());
+                    BulletsUpdateUI();
+                    //SONIDO DE DISPARO
+                }
+                else
+                {
+                    //SONIDO DE ARMA SIN BALA(??)
+                }
+
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.R) && !animator.GetBool("Reloading") && bullets != 6)
             {
                 canShoot = false;
-                BasicBulletBehaviour projectile = Instantiate(bulletType[bulletIndex], shootPosition.position, transform.rotation);
-                projectile.LaunchProjectile(transform.right);
-                animator.Play("GunShoot");
-                bullets--;
-                StartCoroutine(ShootDelay());
-                BulletsUpdateUI();
-                //SONIDO DE DISPARO
-            }
-            else
-            {
-                //SONIDO DE ARMA SIN BALA(??)
+                animator.SetBool("Reloading", true);
+                StartCoroutine(Reload());
+                bullets = 6;
             }
 
-            
+            MoveBetweenWaypoints();
+
         }
-
-        if (Input.GetKeyDown(KeyCode.R) && !animator.GetBool("Reloading") && bullets != 6)
-        {
-            canShoot = false;
-            animator.SetBool("Reloading", true);
-            StartCoroutine(Reload());
-            bullets = 6;
-        }
-
-        MoveBetweenWaypoints();
-
     }
 
     IEnumerator ShootDelay()
