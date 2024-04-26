@@ -205,6 +205,10 @@ MonoBehaviour:
   - {x: 136, y: 6.5, z: 0}
   enemyBullet: {fileID: 5096794723601808842, guid: bd137f84147ff9c42bb191208cefaec1, type: 3}
   doubleProjectile: {fileID: 2916749330837218815, guid: bd1d4cc312fbf0a44a8e5fbd7df653ce, type: 3}
+  chainWall: {fileID: 7452270834937274004, guid: f93cc171bd831ae4ba9c40abc76a0d1c, type: 3}
+  chainWallPos:
+  - {x: 128.48076, y: 3.7647853, z: 0}
+  - {x: 164.09, y: 3.16, z: 0}
 --- !u!61 &4098353194830329519
 BoxCollider2D:
   m_ObjectHideFlags: 0

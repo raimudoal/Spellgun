@@ -22,7 +22,6 @@ public class EnemySpawner : MonoBehaviour
         for(int i = 0; i < enemies.Length; i++)
         {
             Instantiate(enemies[i], enemy_positions[i], transform.rotation);
-
         }
     }
 }

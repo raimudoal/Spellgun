@@ -10,6 +10,10 @@ public class EnemyMage : EnemyBehaviour
     [SerializeField] Vector3[] positions;
     [SerializeField] private EnemyBulletBehaviour enemyBullet;
     [SerializeField] private DoubleProjectile doubleProjectile;
+    [SerializeField] private GameObject chainWall;
+    [SerializeField] private Vector3[] chainWallPos;
+    private Animator door1anim;
+    private Animator door2anim;
     private float attackTimer = 0.0f;
     private float speed;
     private int current = 0;
@@ -21,6 +25,10 @@ public class EnemyMage : EnemyBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerMovement>();
         animator = GetComponent<Animator>();
+        GameObject chainWall1 = Instantiate(chainWall, chainWallPos[0], Quaternion.identity);
+        GameObject chainWall2 = Instantiate(chainWall, chainWallPos[1], Quaternion.identity);
+        door1anim = chainWall1.GetComponent<Animator>();
+        door2anim = chainWall2.GetComponent<Animator>();
     }
 
     void Update()
@@ -28,6 +36,14 @@ public class EnemyMage : EnemyBehaviour
         SpeedChange();
         MoveBetweenWaypoints();
         Attack();
+    }
+
+    private void OnDestroy()
+    {
+        door1anim.Play("chainWallOpen");
+        door2anim.Play("chainWallOpen");
+        Destroy(door1anim.gameObject, 2f);
+        Destroy(door2anim.gameObject, 2f);
     }
 
     private void MoveBetweenWaypoints()

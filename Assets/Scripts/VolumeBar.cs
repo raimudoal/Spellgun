@@ -18,7 +18,6 @@ public class VolumeBar : MonoBehaviour
         {
             Load();
         }
-        ChangeVolume();
     }
 
     public void ChangeVolume()
@@ -28,12 +27,16 @@ public class VolumeBar : MonoBehaviour
 
     private void Load()
     {
+        if(volumeSlider)
         volumeSlider.value = PlayerPrefs.GetFloat("Volume");
     }
 
     public void Save()
     {
-        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
-        ChangeVolume();
+        if (volumeSlider) 
+        {
+            PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+            ChangeVolume();
+        }    
     }
 }

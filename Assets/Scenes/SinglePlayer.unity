@@ -1033,6 +1033,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3954654497329364184, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6b16b6f5479ff84ba714b2ef0ec1304, type: 3}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Size.x
+      value: 2.4100106
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5326118
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.041400313
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.26630592
+      objectReference: {fileID: 0}
     - target: {fileID: 6989353841391315413, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: m_Name
       value: NPC
@@ -1086,6 +1106,10 @@ PrefabInstance:
       value: Use WASD to move your player. You can also press [E] to pass to next
         dialogue or to close it.
       objectReference: {fileID: 0}
+    - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: f6b16b6f5479ff84ba714b2ef0ec1304, type: 3}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: HINT
@@ -46797,6 +46821,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3954654497329364184, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6b16b6f5479ff84ba714b2ef0ec1304, type: 3}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Size.x
+      value: 2.5678234
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Size.y
+      value: 2.6964674
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.041399956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.8482337
+      objectReference: {fileID: 0}
     - target: {fileID: 6989353841391315413, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: m_Name
       value: NPC (2)
@@ -46850,6 +46894,10 @@ PrefabInstance:
       value: Use your mouse to aim, [M1] to shoot, [R] to reload and [B] to change
         bullets.
       objectReference: {fileID: 0}
+    - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: f6b16b6f5479ff84ba714b2ef0ec1304, type: 3}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: HINT
@@ -47267,8 +47315,8 @@ RectTransform:
   m_Children:
   - {fileID: 2024446965}
   - {fileID: 870096663}
-  - {fileID: 1998184893}
   - {fileID: 1138559036}
+  - {fileID: 1998184893}
   m_Father: {fileID: 1532881715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -48961,6 +49009,7 @@ GameObject:
   - component: {fileID: 1532881713}
   - component: {fileID: 1532881712}
   - component: {fileID: 1532881716}
+  - component: {fileID: 1532881717}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -49081,6 +49130,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 2130263711}
   isPaused: 0
+--- !u!114 &1532881717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532881711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca8f74c2ff978fd48bdd05b62a234553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 0}
 --- !u!1 &1571546214
 GameObject:
   m_ObjectHideFlags: 0
@@ -49166,6 +49228,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3954654497329364184, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6b16b6f5479ff84ba714b2ef0ec1304, type: 3}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Size.x
+      value: 2.5480938
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8285077
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00791502
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866418623741085729, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.41425383
+      objectReference: {fileID: 0}
     - target: {fileID: 6989353841391315413, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: m_Name
       value: NPC (1)
@@ -49223,9 +49305,17 @@ PrefabInstance:
       value: Pressing [S] on specific platforms will make you fall.
       objectReference: {fileID: 0}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: f6b16b6f5479ff84ba714b2ef0ec1304, type: 3}
+    - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: HINT
       objectReference: {fileID: 0}
+    - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: f6b16b6f5479ff84ba714b2ef0ec1304, type: 3}
     - target: {fileID: 9031101540095187102, guid: 29ed1dfb93432354dadae525e6b852ba, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.name
       value: HINT

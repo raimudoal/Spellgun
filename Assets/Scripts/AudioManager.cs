@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume");
         if (!Dungeon)
         {
             musicSource.clip = background1;
