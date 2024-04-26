@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class TorchLit : MonoBehaviour
 {
-    private enum Status { Lit, Off };
+    public enum Status { Lit, Off };
     Status status = Status.Off;
     Animator animator;
     Light2D lightComp;

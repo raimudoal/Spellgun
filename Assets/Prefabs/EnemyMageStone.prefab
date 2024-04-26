@@ -149,6 +149,7 @@ MonoBehaviour:
   stoneFall: {fileID: 8245288994624987765, guid: 99bcd3681591ff84bb899b2a66070156, type: 3}
   chainWall: {fileID: 7452270834937274004, guid: f93cc171bd831ae4ba9c40abc76a0d1c, type: 3}
   chainWallPos: {x: 233.64, y: -29.84, z: 0}
+  key2: {fileID: 902343964937261714, guid: fa68260b73edf8e41afc78cca21a9972, type: 3}
 --- !u!95 &7126238337399474862
 Animator:
   serializedVersion: 5

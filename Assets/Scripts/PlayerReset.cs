@@ -8,6 +8,14 @@ public class PlayerReset : MonoBehaviour
     CheckpointManager checkpointManager;
     public Vector3 lastCheckPointSaved;
     bool active = false;
+    public bool key1;
+    public bool key2;
+
+    public bool fire;
+    public bool water;
+    public bool electric;
+    public bool stone;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,8 +27,16 @@ public class PlayerReset : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+    }
 
-        
+    public bool HasKeys()
+    {
+        if (key1 && key2)
+        {
+            return true;
+        }
+        else
+            return false;
     }
 
     // Update is called once per frame
@@ -32,6 +48,7 @@ public class PlayerReset : MonoBehaviour
         {
             StartCoroutine(StopAndTP());
         }
+        
     }
 
     IEnumerator StopAndTP()

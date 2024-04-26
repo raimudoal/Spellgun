@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private GameObject hidder;
     // SALTO DEL JUGADOR
 
+    PlayerReset playerReset;
+
     public float health = 4;
     [SerializeField] public float jumpForce; // Fuerza aplicada al saltar
     [SerializeField] private bool isJumping;
@@ -50,7 +52,8 @@ public class PlayerMovement : MonoBehaviour
     Animator hidderAnimator;
     AudioManager audioManager;
     [SerializeField] AudioSource audioSource;
-
+    public bool ownKey1;
+    public bool ownKey2;
 
     private void Awake()
     {
@@ -72,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
         gameController = GameObject.FindGameObjectWithTag("controller").GetComponent<GameController>();
+        playerReset = GameObject.FindGameObjectWithTag("resetter").GetComponent<PlayerReset>();
     }
 
     private void Start()
@@ -111,6 +115,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isDead)
         {
+            ownKey1 = playerReset.key1;
+            ownKey2 = playerReset.key2;
             if (transform.position.y < gameController.deathPos)
             {
                 StartCoroutine(DeathCoroutine());
@@ -218,6 +224,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag.Equals("key1"))
+        {
+            playerReset.key1 = true;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag.Equals("key2"))
+        {
+            playerReset.key2 = true;
+            Destroy(collision.gameObject);
+        }
         if (iFrames <= 0 && collision.gameObject.CompareTag("Enemy") || iFrames <= 0 && collision.gameObject.CompareTag("EnemyBullet"))
         {
             health = health - 1;

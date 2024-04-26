@@ -18,6 +18,7 @@ public class EnemyMageWater : EnemyBehaviour
     private int current = 0;
     private bool hasAnimated = false;
 
+    [SerializeField] private GameObject key1;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -36,6 +37,7 @@ public class EnemyMageWater : EnemyBehaviour
 
     private void OnDestroy()
     {
+        Instantiate(key1, transform.position, Quaternion.identity);
         door1anim.Play("chainWallOpen");
         Destroy(door1anim.gameObject, 2f);
     }

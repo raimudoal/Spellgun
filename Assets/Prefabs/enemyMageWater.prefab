@@ -164,6 +164,7 @@ MonoBehaviour:
   followBullet: {fileID: 5038986461151365524, guid: 9e3fa8a731dd5e24d80de9c38bf82eb7, type: 3}
   chainWall: {fileID: 7452270834937274004, guid: f93cc171bd831ae4ba9c40abc76a0d1c, type: 3}
   chainWallPos: {x: 71.48, y: 108.76, z: 0}
+  key1: {fileID: 2809425175816898810, guid: 3c3ece4e2439e064aa10559f1fab7048, type: 3}
 --- !u!61 &2411677276682774947
 BoxCollider2D:
   m_ObjectHideFlags: 0

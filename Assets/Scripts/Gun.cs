@@ -12,9 +12,11 @@ public class Gun : MonoBehaviour
     private float WPradius = 0.01f;
     public float speed;
     [SerializeField] private Transform UIBullet;
-    [SerializeField] private bool water = false, electric = false, stone = false;
+    [SerializeField] private bool fire = false, water = false, electric = true, stone = false;
     [SerializeField] private Image[] bulletsUI;
     [SerializeField] private Sprite[] bulletsImage;
+
+    PlayerReset playerReset;
 
     int target = 0;
     float r;
@@ -31,6 +33,12 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private List<BasicBulletBehaviour> bulletType = new List<BasicBulletBehaviour>();
 
+    private void Awake()
+    {
+        playerReset = GameObject.FindGameObjectWithTag("resetter").GetComponent<PlayerReset>();
+
+    }
+
     // Start is called before the first frame update
     [System.Obsolete]
     void Start()
@@ -38,6 +46,11 @@ public class Gun : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         Random.seed = System.DateTime.Now.Millisecond;
+        ChangeBullet();
+        fire = playerReset.fire;
+        water = playerReset.water;
+        electric = playerReset.electric;
+        stone = playerReset.stone;
     }
 
     // Update is called once per frame
@@ -45,6 +58,18 @@ public class Gun : MonoBehaviour
     {
         if (Time.timeScale != 0.0f)
         {
+            if(fire)
+                playerReset.fire = true;
+
+            if (water)
+                playerReset.water = true;
+
+            if (stone)
+                playerReset.stone = true;
+
+            if (electric)
+                playerReset.electric = true;
+
             float Angle = Mathf.SmoothDampAngle(UIBullet.eulerAngles.z, target, ref r, 0.1f);
             UIBullet.rotation = Quaternion.Euler(0, 0, Angle);
 
@@ -152,12 +177,19 @@ public class Gun : MonoBehaviour
 
         if (bulletIndex == bulletType.Count -1)
         {
-            bulletIndex = 0;
+            if(!fire)
+            bulletIndex = 2;
+            else
+                bulletIndex = 0;
         }
         else
         {
             bulletIndex++;
-            if (bulletIndex == 1 && !water)
+            if (bulletIndex == 0 && !fire)
+            {
+                ChangeBullet();
+            }
+            else if (bulletIndex == 1 && !water)
             {
                 ChangeBullet();
             }
@@ -165,11 +197,14 @@ public class Gun : MonoBehaviour
             {
                 ChangeBullet();
             }
-            else if(bulletIndex == 3 && !stone)
+            else if (bulletIndex == 3 && !stone)
             {
                 ChangeBullet();
             }
         }
+        if (!fire && !stone && !water) {
+            target = 180;
+        }else
         target = target - 90;
     }
 

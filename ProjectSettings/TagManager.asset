@@ -17,6 +17,8 @@ TagManager:
   - resetter
   - scenehidder
   - audio
+  - key1
+  - key2
   layers:
   - Default
   - TransparentFX

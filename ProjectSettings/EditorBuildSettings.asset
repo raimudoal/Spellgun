@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mapa2.unity
     guid: 55eb88411a67e43409bdec59369d2ce1
+  - enabled: 1
+    path: Assets/Scenes/FinalBossRoom.unity
+    guid: 4339f0815b92a9541a5eb775f88f4b95
   m_configObjects: {}

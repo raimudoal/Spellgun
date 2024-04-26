@@ -18,6 +18,8 @@ public class EnemyMageStone : EnemyBehaviour
     private int current = 0;
     private bool hasAnimated = false;
 
+    [SerializeField]private GameObject key2;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -37,6 +39,7 @@ public class EnemyMageStone : EnemyBehaviour
 
     private void OnDestroy()
     {
+        Instantiate(key2, transform.position, Quaternion.identity);
         door1anim.Play("chainWallOpen");
         Destroy(door1anim.gameObject, 2f);
     }
