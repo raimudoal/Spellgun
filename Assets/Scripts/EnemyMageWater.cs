@@ -14,8 +14,6 @@ public class EnemyMageWater : EnemyBehaviour
     [SerializeField] private Vector3 chainWallPos;
     private Animator door1anim;
     private float attackTimer = 0.0f;
-    private float speed;
-    private int current = 0;
     private bool hasAnimated = false;
 
     [SerializeField] private GameObject key1;

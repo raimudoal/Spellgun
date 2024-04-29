@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8659021080597679759}
   - component: {fileID: 3905209153058244615}
   - component: {fileID: 1513568077326590652}
+  - component: {fileID: -4045195074886080527}
   m_Layer: 0
   m_Name: corona
   m_TagString: Untagged
@@ -158,3 +159,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4045195074886080527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845201101405548665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388f6ec795d46b745aa695ce3abff30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
