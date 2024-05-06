@@ -44,10 +44,15 @@ public class PlayerReset : MonoBehaviour
     {
         player = FindObjectOfType<PlayerMovement>();
         checkpointManager = FindObjectOfType<CheckpointManager>();
-        if (player.health == 0 && !active)
+        if (player)
         {
-            StartCoroutine(StopAndTP());
+            if (player.health == 0 && !active)
+            {
+                StartCoroutine(StopAndTP());
+            }
+
         }
+
         
     }
 

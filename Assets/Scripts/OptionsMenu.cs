@@ -47,6 +47,11 @@ public class OptionsMenu : MonoBehaviour
         SceneManager.LoadScene(sceneBuildIndex: 0);
     }
 
+    public void ReturnMainMenu2()
+    {
+        SceneManager.LoadScene(sceneBuildIndex: 6);
+    }
+
     public void SetFullscreen()
     {
         Screen.fullScreen = !Screen.fullScreen;

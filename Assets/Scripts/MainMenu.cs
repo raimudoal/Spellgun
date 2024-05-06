@@ -20,12 +20,6 @@ public class MainMenu : MonoBehaviour
 
     public void ChangeScene(int scene)
     {
-        StartCoroutine(MakeTransition(scene));
-    }
-
-    IEnumerator MakeTransition(int scene)
-    {
-        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(sceneBuildIndex: scene);
     }
 }
