@@ -35,7 +35,8 @@ public class EnemyMageWater : EnemyBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(key1, transform.position, Quaternion.identity);
+        if (health <= 0)
+            Instantiate(key1, transform.position, Quaternion.identity);
         door1anim.Play("chainWallOpen");
         Destroy(door1anim.gameObject, 2f);
     }

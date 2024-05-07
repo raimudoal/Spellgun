@@ -42,7 +42,8 @@ public class EnemyMageKing : EnemyBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(crown, transform.position, Quaternion.identity);
+        if (health <= 0)
+            Instantiate(crown, transform.position, Quaternion.identity);
     }
 
     private void MoveBetweenWaypoints()

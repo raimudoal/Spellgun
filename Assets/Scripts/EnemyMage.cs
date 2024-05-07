@@ -76,19 +76,19 @@ public class EnemyMage : EnemyBehaviour
         }
         else if (health > 150)
         {
-            speed = 4;
+            speed = 2.3f;
         }
         else if (health > 25)
         {
-            speed = 6;
+            speed = 2.8f;
         }
         else if (health > 10)
         {
-            speed = 8;
+            speed = 3.1f;
         }
         else 
         {
-            speed = 12;
+            speed = 3.5f;
         }
     }
 

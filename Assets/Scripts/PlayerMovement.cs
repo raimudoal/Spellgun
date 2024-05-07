@@ -76,11 +76,13 @@ public class PlayerMovement : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
         gameController = GameObject.FindGameObjectWithTag("controller").GetComponent<GameController>();
         playerReset = GameObject.FindGameObjectWithTag("resetter").GetComponent<PlayerReset>();
+        
     }
 
     private void Start()
     {
         vecGravity = new Vector2(0, -Physics2D.gravity.y);
+        Time.timeScale = 1.0f;
     }
 
 
@@ -88,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
     // // // // // // // // // // // // // // // // // // // // // // //
     void FixedUpdate()
     {
-
+        
         // Obtener la entrada del jugador en el eje horizontal
         if (!isDead)
         {
@@ -119,7 +121,8 @@ public class PlayerMovement : MonoBehaviour
             ownKey2 = playerReset.key2;
             if (transform.position.y < gameController.deathPos)
             {
-                StartCoroutine(DeathCoroutine());
+                health = 0;
+                UpdateHealthUI();
             }
             if (iFrames > 0)
             {
@@ -224,6 +227,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (collision.gameObject.tag.Equals("key1"))
         {
             playerReset.key1 = true;
@@ -265,6 +269,12 @@ public class PlayerMovement : MonoBehaviour
             imageColor = 0;
             UpdateHealthUI();
         }
+
+        if (collision.gameObject.tag.Equals("CheckPoint"))
+        {
+            health = 4;
+            UpdateHealthUI();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -285,7 +295,7 @@ public class PlayerMovement : MonoBehaviour
         healthUIImage.fillAmount = health / 4;
     }
 
-    private IEnumerator DeathCoroutine()
+    public IEnumerator DeathCoroutine()
     {
         Light2D light = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>();
         dustParticle.Stop();

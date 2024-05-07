@@ -19,6 +19,10 @@ TagManager:
   - audio
   - key1
   - key2
+  - PouchFireUI
+  - PouchWaterUI
+  - PouchElectricUI
+  - PouchStoneUI
   layers:
   - Default
   - TransparentFX

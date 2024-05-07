@@ -18,6 +18,7 @@ public class EnemyBulletBehaviour : MonoBehaviour
     }
     public void LaunchProjectile(Vector2 direction)
     {
+        direction.Normalize();
         projectileRb.velocity = direction * speed;
         Destroy(gameObject, destroyDelay);
     }

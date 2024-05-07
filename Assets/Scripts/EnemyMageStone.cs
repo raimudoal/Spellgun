@@ -39,6 +39,7 @@ public class EnemyMageStone : EnemyBehaviour
 
     private void OnDestroy()
     {
+        if(health <= 0)
         Instantiate(key2, transform.position, Quaternion.identity);
         door1anim.Play("chainWallOpen");
         Destroy(door1anim.gameObject, 2f);

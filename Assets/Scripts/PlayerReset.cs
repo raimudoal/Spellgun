@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerReset : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerReset : MonoBehaviour
     bool active = false;
     public bool key1;
     public bool key2;
+
+    private Image fireUI, waterUI, electricUI, stoneUI;
 
     public bool fire;
     public bool water;
@@ -52,8 +55,27 @@ public class PlayerReset : MonoBehaviour
             }
 
         }
+        fireUI = GameObject.FindGameObjectWithTag("PouchFireUI").GetComponent<Image>();
+        waterUI = GameObject.FindGameObjectWithTag("PouchWaterUI").GetComponent<Image>();
+        electricUI = GameObject.FindGameObjectWithTag("PouchElectricUI").GetComponent<Image>();
+        stoneUI = GameObject.FindGameObjectWithTag("PouchStoneUI").GetComponent<Image>();
 
-        
+        if (fireUI && fire)
+        {
+            fireUI.color = Color.white;
+        }
+        if (waterUI && water)
+        {
+            waterUI.color = Color.white;
+        }
+        if (electricUI && electric)
+        {
+            electricUI.color = Color.white;
+        }
+        if (stoneUI && stone)
+        {
+            stoneUI.color = Color.white;
+        }
     }
 
     IEnumerator StopAndTP()

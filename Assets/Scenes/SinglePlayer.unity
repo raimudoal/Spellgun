@@ -761,6 +761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckPoint (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1131965466681956659, guid: 27a4eda667d5bfb459e2d4c6015ef968, type: 3}
+      propertyPath: m_TagString
+      value: CheckPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 3390559642541982381, guid: 27a4eda667d5bfb459e2d4c6015ef968, type: 3}
       propertyPath: m_LocalPosition.x
       value: 93.54
@@ -1081,7 +1085,7 @@ GameObject:
   - component: {fileID: 249894508}
   m_Layer: 5
   m_Name: PouchFire
-  m_TagString: Untagged
+  m_TagString: PouchFireUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1118,7 +1122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1242,6 +1246,10 @@ PrefabInstance:
     - target: {fileID: 1131965466681956659, guid: 27a4eda667d5bfb459e2d4c6015ef968, type: 3}
       propertyPath: m_Name
       value: CheckPoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131965466681956659, guid: 27a4eda667d5bfb459e2d4c6015ef968, type: 3}
+      propertyPath: m_TagString
+      value: CheckPoint
       objectReference: {fileID: 0}
     - target: {fileID: 3390559642541982381, guid: 27a4eda667d5bfb459e2d4c6015ef968, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1376,7 +1384,7 @@ GameObject:
   - component: {fileID: 372242444}
   m_Layer: 5
   m_Name: PouchWater
-  m_TagString: Untagged
+  m_TagString: PouchWaterUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1413,7 +1421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1905,7 +1913,7 @@ GameObject:
   - component: {fileID: 407599354}
   m_Layer: 5
   m_Name: PouchElectric
-  m_TagString: Untagged
+  m_TagString: PouchElectricUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47111,7 +47119,7 @@ GameObject:
   - component: {fileID: 611882928}
   m_Layer: 5
   m_Name: PouchStone
-  m_TagString: Untagged
+  m_TagString: PouchStoneUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47148,7 +47156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -68797,7 +68805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
