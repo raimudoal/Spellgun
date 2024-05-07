@@ -72,23 +72,23 @@ public class EnemyMageKing : EnemyBehaviour
     {
         if (health > 80)
         {
-            speed = 2;
+            speed = 1.5f;
         }
-        else if (health > 150)
+        else if (health > 65)
         {
-            speed = 4;
+            speed = 1.8f;
         }
-        else if (health > 25)
+        else if (health > 45)
         {
-            speed = 6;
+            speed = 2.3f;
         }
-        else if (health > 10)
+        else if (health > 20)
         {
-            speed = 8;
+            speed = 2.5f;
         }
         else
         {
-            speed = 12;
+            speed = 3f;
         }
     }
 
@@ -163,8 +163,6 @@ public class EnemyMageKing : EnemyBehaviour
                 FollowEnemyBullet bullet6 = Instantiate(followBullet, new Vector3(Random.Range(43, 52), Random.Range(-4, -9), 0), Quaternion.identity);
                 FollowEnemyBullet bullet7 = Instantiate(followBullet, new Vector3(Random.Range(43, 52), Random.Range(-4, -9), 0), Quaternion.identity);
                 FollowEnemyBullet bullet8 = Instantiate(followBullet, new Vector3(Random.Range(43, 52), Random.Range(-4, -9), 0), Quaternion.identity);
-                FollowEnemyBullet bullet9 = Instantiate(followBullet, new Vector3(Random.Range(43, 52), Random.Range(-4, -9), 0), Quaternion.identity);
-                FollowEnemyBullet bullet10 = Instantiate(followBullet, new Vector3(Random.Range(43, 52), Random.Range(-4, -9), 0), Quaternion.identity);
             }
 
             attackTimer = 0;

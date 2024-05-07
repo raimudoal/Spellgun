@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e372a5dcfa9a0a4fa5cccdb229c5b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 175
   enemyExploision: {fileID: 5435607737554505745, guid: b9d73874d2aea47419c55efc69bcf295, type: 3}
   spriteRenderer: {fileID: 0}
   rb: {fileID: 0}

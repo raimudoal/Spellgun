@@ -70,8 +70,7 @@ public class EnemyMageWater : EnemyBehaviour
                 FollowEnemyBullet bullet4 = Instantiate(followBullet, new Vector3(Random.Range(66,77), Random.Range(125,130), 0), Quaternion.identity);
                 FollowEnemyBullet bullet5 = Instantiate(followBullet, new Vector3(Random.Range(66, 77), Random.Range(125, 130), 0), Quaternion.identity);
                 FollowEnemyBullet bullet6 = Instantiate(followBullet, new Vector3(Random.Range(66, 77), Random.Range(125, 130), 0), Quaternion.identity);
-                FollowEnemyBullet bullet7 = Instantiate(followBullet, new Vector3(Random.Range(66, 77), Random.Range(125, 130), 0), Quaternion.identity);
-                FollowEnemyBullet bullet8 = Instantiate(followBullet, new Vector3(Random.Range(66, 77), Random.Range(125, 130), 0), Quaternion.identity);
+
             }
 
             attackTimer = 0;
