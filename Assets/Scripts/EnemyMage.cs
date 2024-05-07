@@ -70,25 +70,25 @@ public class EnemyMage : EnemyBehaviour
 
     private void SpeedChange()
     {
-        if (health > 80)
+        if (health > 50)
         {
-            speed = 2;
+            speed = 1.6f;
         }
-        else if (health > 150)
+        else if (health > 35)
         {
-            speed = 2.3f;
+            speed = 1.9f;
         }
         else if (health > 25)
         {
-            speed = 2.8f;
+            speed = 2.3f;
         }
         else if (health > 10)
         {
-            speed = 3.1f;
+            speed = 2.5f;
         }
         else 
         {
-            speed = 3.5f;
+            speed = 2.8f;
         }
     }
 
