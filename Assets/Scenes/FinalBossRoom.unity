@@ -120854,7 +120854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 80038181}
-  deathPos: -10
+  deathPos: -100
 --- !u!114 &1145779705
 MonoBehaviour:
   m_ObjectHideFlags: 0
