@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerReset : MonoBehaviour
@@ -45,6 +46,10 @@ public class PlayerReset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().name.Equals("FinalBossRoom"))
+        {
+            lastCheckPointSaved = new Vector3(47.5f, -16, 0);
+        }
         player = FindObjectOfType<PlayerMovement>();
         checkpointManager = FindObjectOfType<CheckpointManager>();
         if (player)

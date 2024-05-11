@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 216258334}
   m_Layer: 5
   m_Name: PouchFire
-  m_TagString: Untagged
+  m_TagString: PouchFireUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120102,7 +120102,7 @@ GameObject:
   - component: {fileID: 651865541}
   m_Layer: 0
   m_Name: Light 2D
-  m_TagString: Untagged
+  m_TagString: GlobalLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122892,7 +122892,7 @@ GameObject:
   - component: {fileID: 1418180411}
   m_Layer: 5
   m_Name: PouchElectric
-  m_TagString: Untagged
+  m_TagString: PouchElectricUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128467,7 +128467,7 @@ GameObject:
   - component: {fileID: 1813016660}
   m_Layer: 5
   m_Name: PouchStone
-  m_TagString: Untagged
+  m_TagString: PouchStoneUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128658,7 +128658,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -129126,7 +129126,7 @@ GameObject:
   - component: {fileID: 2010927187}
   m_Layer: 5
   m_Name: PouchWater
-  m_TagString: Untagged
+  m_TagString: PouchWaterUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
