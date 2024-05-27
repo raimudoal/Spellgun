@@ -50,6 +50,14 @@ public class PlayerReset : MonoBehaviour
         {
             lastCheckPointSaved = new Vector3(47.5f, -16, 0);
         }
+        if (SceneManager.GetActiveScene().name.Equals("MainMenu"))
+        {
+            fire = false;
+            water = false;
+            stone = false;
+            key1 = false;
+            key2 = false;
+        }
         player = FindObjectOfType<PlayerMovement>();
         checkpointManager = FindObjectOfType<CheckpointManager>();
         if (player)
@@ -69,9 +77,17 @@ public class PlayerReset : MonoBehaviour
         {
             fireUI.color = Color.white;
         }
+        else
+        {
+            fireUI.color = new Color(1, 1, 1, 0);
+        }
         if (waterUI && water)
         {
             waterUI.color = Color.white;
+        }
+        else
+        {
+            waterUI.color = new Color(1, 1, 1, 0);
         }
         if (electricUI && electric)
         {
@@ -80,6 +96,10 @@ public class PlayerReset : MonoBehaviour
         if (stoneUI && stone)
         {
             stoneUI.color = Color.white;
+        }
+        else
+        {
+            stoneUI.color = new Color(1, 1, 1, 0);
         }
     }
 
